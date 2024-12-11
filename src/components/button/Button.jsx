@@ -1,8 +1,7 @@
 import classes from './Button.module.css'
+import React from "react";
 
 export default function Button({children, isActive, ...props}) {
-
-    console.log(classes)
     return (
         <button
             {...props}
