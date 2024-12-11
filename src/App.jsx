@@ -10,12 +10,17 @@ import {
     Navigate,
 } from "react-router-dom";
 
+function isAuthenticated() {
+    console.log(localStorage.getItem('token'))
+    return !!localStorage.getItem('token'); // Возвращает true, если токен есть
+}
+
 export default function App() {
 
     return (
         <>
             <Router>
-                <Navigation/>
+                {isAuthenticated() && <Navigation />}
                 <Routes>
                     <Route
                         exact
