@@ -21,7 +21,6 @@ export default function HomePage() {
     );
 };
 
-
 function Promo(props) {
     return (
         <div className={props.className}>
