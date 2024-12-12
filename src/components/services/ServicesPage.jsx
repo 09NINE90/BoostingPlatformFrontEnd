@@ -1,15 +1,24 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
+import { useLocation } from "react-router-dom";
 import axios from 'axios'
 import './Services.css'
 
 
 const ServicesPage = () => {
 
+    useEffect(() => {
+        document.title = "Services - Dead PackMan"; // Устанавливаем заголовок
+    }, []);
+
+    const location = useLocation();
+    const { game } = location.state || {};
     const [orders, setOrders] = useState([]);
 
     const getAllOrders = async () => {
-        const game = {title: "Valorant"};
-        const requestData = {game, pageNumber: 1, pageSize: 10};
+        if (!game) return;
+
+        const gameRequest = {title: game.title};
+        const requestData = {game: gameRequest, pageNumber: 1, pageSize: 10};
 
         try {
             const response = await axios.post('http://localhost/orders/getAllOrders', requestData, {withCredentials: true});
@@ -21,13 +30,17 @@ const ServicesPage = () => {
 
     useEffect(() => {
         getAllOrders();
-    }, []);
+    }, [game]);
+
+    if (!game) {
+        return <p>Игра не выбрана. Вернитесь на главную страницу.</p>;
+    }
 
     return (
         <main>
             <div className="game-header">
-                <h1>Valorant Boosting Services</h1>
-                <p>Повышайте свой ранг и улучшайте навыки с нашими профессиональными услугами.</p>
+                <h1>{game.title} Boosting Services</h1>
+                <p>{game.description || "Описание отсутствует."}</p>
             </div>
             <section className="services-container ">
                 {orders.length > 0 ? (
@@ -40,7 +53,7 @@ const ServicesPage = () => {
                         </div>
                     ))
                 ) : (
-                    <p>Загрузки заказов...</p>
+                    <p>No orders by this game</p>
                 )}
             </section>
         </main>

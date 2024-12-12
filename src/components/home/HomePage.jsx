@@ -1,10 +1,12 @@
-import React, { useState, useEffect }  from "react";
+import { useEffect } from "react";
 import {promoList} from './HomeData';
 import Promo from './Promo.jsx';
-import axios from 'axios'
 import './HomePage.css'
 
 const HomePage = () => {
+    useEffect(() => {
+        document.title = "Home - Dead PackMan"; // Устанавливаем заголовок
+    }, []);
     return (
         <>
             <main>
@@ -16,20 +18,10 @@ const HomePage = () => {
                             alt="The Final Shape Promo"/>
                     </div>
                     <Promo className='promo-right' {...promoList[1]}/>
-                    <button onClick={logout}>Logout</button>
                 </section>
             </main>
         </>
     );
 };
-
-const logout = async () => {
-    try {
-        const response = await axios.post('http://localhost/api/auth/logout', {}, {withCredentials: true}); // Отправляем запрос на выход с cookie
-    } catch (err) {
-        console.error('Failed to logout:', err);
-    }
-};
-
 
 export default HomePage;
