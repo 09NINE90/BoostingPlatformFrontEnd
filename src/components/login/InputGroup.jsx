@@ -1,9 +1,10 @@
 import React from "react";
+import styles from "./InputGroup.module.css";
 
 const InputGroup = (props) => {
-    const {type, value, onChange, title} = props;
+    const { type, value, onChange, title } = props;
     return (
-        <div className="input-group">
+        <div className={styles.inputGroup}>
             <input
                 type={type}
                 value={value}
@@ -11,10 +12,11 @@ const InputGroup = (props) => {
                 required
                 placeholder=" "
                 autoComplete="off"
+                className={styles.input}
             />
-            <label>{title}</label>
+            <label className={styles.label}>{title}</label>
         </div>
-    )
-}
+    );
+};
 
 export default InputGroup;
