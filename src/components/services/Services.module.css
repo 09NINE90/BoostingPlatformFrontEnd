@@ -1,8 +1,8 @@
-main{
+main {
     padding-inline: 15%;
 }
 
-.game-header {
+.gameHeader {
     text-align: center;
     padding: 50px 20%;
     background-color: #2d2c3c;
@@ -10,18 +10,18 @@ main{
     margin-bottom: 30px;
 }
 
-.game-header h1 {
+.gameHeader h1 {
     font-size: 36px;
     margin-bottom: 10px;
     color: #ff4c4c;
 }
 
-.game-header p {
+.gameHeader p {
     font-size: 18px;
     color: #aaa;
 }
 
-.game-header::after {
+.gameHeader::after {
     content: "";
     display: block;
     width: 80px;
@@ -31,7 +31,7 @@ main{
     border-radius: 2px;
 }
 
-.services-container {
+.servicesContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -52,7 +52,7 @@ main{
     transform: scale(1.05);
 }
 
-.card img {
+.cardImage {
     width: 100%;
     border-radius: 5px;
 }
@@ -62,11 +62,13 @@ main{
     margin-bottom: 10px;
     color: #ff4c4c;
 }
+
 .card p {
     font-size: 1.5vh;
     margin-bottom: 15px;
     color: #ccc;
 }
+
 .card span {
     display: block;
     font-size: 2vh;
@@ -74,6 +76,7 @@ main{
     margin-bottom: 15px;
     color: #fff;
 }
+
 .card button {
     background-color: #ff4c4c;
     color: #fff;
@@ -83,6 +86,7 @@ main{
     cursor: pointer;
     font-size: 16px;
 }
+
 .card button:hover {
     background-color: #e04343;
 }
