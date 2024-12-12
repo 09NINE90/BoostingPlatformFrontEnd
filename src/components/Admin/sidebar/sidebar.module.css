@@ -1,0 +1,42 @@
+/* Sidebar.module.css */
+.sidebar {
+    background-color: #2d2c3c;
+    padding: 10px;
+    display: inline-block;
+    flex-direction: column;
+    position: fixed; /* Attach to the left side of the screen */
+    left: 0;
+    height: 100vh; /* Full height */
+    color: #fff;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+.navLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebarLink {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    background-color: #3a3950;
+    border-radius: 3px;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.sidebarLink:hover {
+    background-color: #6a6ad8;
+}
+
+.sidebarLink.active {
+    background-color: #5050d0;
+}
