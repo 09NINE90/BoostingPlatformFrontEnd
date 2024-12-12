@@ -24,11 +24,8 @@ export default function LoginForm() {
             const response = await axios.post('http://localhost/api/auth/login', {
                 username,
                 password
-            });
-            const token = response.data;
-            localStorage.setItem('token', token);
-            console.log(localStorage.getItem('token'));
-            navigate('/')
+            } , { withCredentials: true });
+            navigate('/homePage')
         } catch (err) {
             setError('Invalid credentials');
         }

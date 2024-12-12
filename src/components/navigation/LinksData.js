@@ -1,7 +1,11 @@
 export const LinksData = [
     {
         path: "/homePage",
-        name: "HomePage"
+        name: "Home"
+    },
+    {
+        path: "/servicesPage",
+        name: "Services"
     },
     {
         path: "/loginForm",
