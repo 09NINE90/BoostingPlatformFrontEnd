@@ -4,6 +4,7 @@ main{
 
 .game-header {
     text-align: center;
+    margin-top: 1rem;
     padding: 50px 20%;
     background-color: #2d2c3c;
     border-radius: 10px;

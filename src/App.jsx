@@ -1,33 +1,34 @@
-import Button from "./components/button/Button.jsx";
-import HomePage from "./components/home/HomePage.jsx";
-import Navigation from "./components/navigation/Navigation.jsx";
-import LoginForm from "./components/login/LoginForm.jsx";
-import ServicesPage from "./components/services/ServicesPage.jsx";
-
-import {Routes, Route} from "react-router";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { fetchCurrentUser } from "./store/authSlice";
+import HomePage from './components/home/HomePage.jsx';
+import Navigation from './components/navigation/Navigation.jsx';
+import LoginForm from './components/login/LoginForm.jsx';
+import ServicesPage from './components/services/ServicesPage.jsx';
 
 const App = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(dispatch(fetchCurrentUser()));
+        dispatch(fetchCurrentUser());
+    }, [dispatch]);
+
     return (
-        <>
-            <Navigation/>
-            <Routes>
-                <Route
-                    exact
-                    path="/homePage"
-                    element={<HomePage/>}
-                />
-                <Route
-                    exact
-                    path="/loginForm"
-                    element={<LoginForm/>}
-                />
-                <Route
-                    exact
-                    path="/servicesPage"
-                    element={<ServicesPage/>}
-                />
-            </Routes>
-        </>
+        <Router>
+            <>
+                <Navigation />
+                <Routes>
+                    <Route exact path="/homePage" element={<HomePage />} />
+                    <Route exact path="/loginForm" element={<LoginForm />} />
+                    <Route exact path="/servicesPage" element={<ServicesPage />} />
+                    {/* Default route */}
+                    <Route path="/" element={<Navigate to="/homePage" />} />
+                </Routes>
+            </>
+        </Router>
     );
 };
 
