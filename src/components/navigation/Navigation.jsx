@@ -7,7 +7,7 @@ const Navigation = () => {
     return (
         <header>
             <div className="logo">Dead PackMan</div>
-            <nav>
+            <nav className="nav-links">
                 {LinksData.map((link) => (
                     <Link to={link.path} key={link.path}>{link.name}</Link>
                 ))}
