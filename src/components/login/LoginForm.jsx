@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './LoginForm.css'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
+import InputGroup from './InputGroup.jsx'
 
 export default function LoginForm() {
     const [username, setUsername] = useState('');
@@ -10,17 +10,22 @@ export default function LoginForm() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+    const onChangePasswordInput = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const onChangeUsernameInput = (e) => {
+        setUsername(e.target.value)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost/api/auth/login', {
                 username,
                 password
-            });
-            const token = response.data;
-            localStorage.setItem('token', token);
-            console.log(localStorage.getItem('token'));
-            navigate('/')
+            } , { withCredentials: true });
+            navigate('/homePage')
         } catch (err) {
             setError('Invalid credentials');
         }
@@ -31,31 +36,22 @@ export default function LoginForm() {
             <h2>Sign in</h2>
             {error && <p style={{color: 'red'}}>{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                        placeholder=" "
-                        autoComplete="off"
-                    />
-                    <label>Login</label>
-                </div>
-                <div className="input-group">
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        placeholder=" "
-                        autoComplete="off"
-                    />
-                    <label>Password</label>
-                </div>
+                <InputGroup
+                    type="text"
+                    value={username}
+                    onChange={onChangeUsernameInput}
+                    title="Login"
+                />
+                <InputGroup
+                    type="password"
+                    value={password}
+                    onChange={onChangePasswordInput}
+                    title="Password"
+                />
                 <button type="submit" className="btn">Sign in</button>
             </form>
         </div>
-
     );
 }
+
+

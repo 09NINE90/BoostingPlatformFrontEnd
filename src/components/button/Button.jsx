@@ -1,7 +1,7 @@
 import classes from './Button.module.css'
 import React from "react";
 
-export default function Button({children, isActive, ...props}) {
+const Button = ({children, isActive, ...props}) => {
     return (
         <button
             {...props}
@@ -12,3 +12,5 @@ export default function Button({children, isActive, ...props}) {
         </button>
     )
 }
+
+export default Button;

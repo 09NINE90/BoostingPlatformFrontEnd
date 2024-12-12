@@ -1,35 +1,34 @@
 import Button from "./components/button/Button.jsx";
-import LoginForm from "./components/login/LoginForm.jsx";
 import HomePage from "./components/home/HomePage.jsx";
 import Navigation from "./components/navigation/Navigation.jsx";
+import LoginForm from "./components/login/LoginForm.jsx";
+import ServicesPage from "./components/services/ServicesPage.jsx";
 
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
+import {Routes, Route} from "react-router";
 
-export default function App() {
-
+const App = () => {
     return (
         <>
-            <Router>
-                <Navigation/>
-                <Routes>
-                    <Route
-                        exact
-                        path="/"
-                        element={<HomePage/>}
-                    />
-                    <Route
-                        exact
-                        path="/LoginForm"
-                        element={<LoginForm/>}
-                    />
-                </Routes>
-            </Router>
+            <Navigation/>
+            <Routes>
+                <Route
+                    exact
+                    path="/homePage"
+                    element={<HomePage/>}
+                />
+                <Route
+                    exact
+                    path="/loginForm"
+                    element={<LoginForm/>}
+                />
+                <Route
+                    exact
+                    path="/servicesPage"
+                    element={<ServicesPage/>}
+                />
+            </Routes>
         </>
-    )
-}
+    );
+};
 
+export default App;

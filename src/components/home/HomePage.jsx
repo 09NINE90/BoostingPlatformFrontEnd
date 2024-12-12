@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import {promoList} from './HomeData';
-import {Link} from "react-router-dom";
+import Promo from './Promo.jsx';
+import axios from 'axios'
 import './HomePage.css'
 
-export default function HomePage() {
+const HomePage = () => {
     return (
         <>
             <main>
@@ -15,18 +16,20 @@ export default function HomePage() {
                             alt="The Final Shape Promo"/>
                     </div>
                     <Promo className='promo-right' {...promoList[1]}/>
+                    <button onClick={logout}>Logout</button>
                 </section>
             </main>
         </>
     );
 };
 
+const logout = async () => {
+    try {
+        const response = await axios.post('http://localhost/api/auth/logout', {}, {withCredentials: true}); // Отправляем запрос на выход с cookie
+    } catch (err) {
+        console.error('Failed to logout:', err);
+    }
+};
 
-function Promo(props) {
-    return (
-        <div className={props.className}>
-            <h3>{props.head}</h3>
-            <p>{props.body}</p>
-        </div>
-    )
-}
+
+export default HomePage;
