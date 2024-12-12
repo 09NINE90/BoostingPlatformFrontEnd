@@ -1,0 +1,51 @@
+/* Navigation.module.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Центрирует элементы по вертикали */
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #2a293b, #1c1b29);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Легкое свечение текста */
+}
+
+.navLinks {
+    display: flex;
+    align-items: center; /* Центрирует пункты меню по вертикали */
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #9d9dff; /* Нежный цвет текста */
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 20px; /* Закругленные края */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navLink.active, .navLink:hover {
+    background-color: #6a6ad8; /* Цвет фона при наведении или активности */
+    color: #fff; /* Цвет текста при наведении */
+    text-shadow: 0 0 10px rgba(106, 106, 216, 0.5); /* Легкое свечение текста */
+}
+
+.headerIcons a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 15px;
+}

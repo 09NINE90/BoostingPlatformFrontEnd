@@ -1,23 +1,23 @@
 import React from "react";
-import './Navigation.css'
-import {LinksData} from './LinksData.js'
-import { Link } from "react-router";
+import styles from "./Navigation.module.css";
+import { LinksData } from "./LinksData.js";
+import { Link } from "react-router-dom"; // Updated for react-router-dom compatibility
 
 const Navigation = () => {
     return (
-        <header>
-            <div className="logo">Dead PackMan</div>
-            <nav className="nav-links">
+        <header className={styles.header}>
+            <div className={styles.logo}>Dead PackMan</div>
+            <nav className={styles.navLinks}>
                 {LinksData.map((link) => (
-                    <Link to={link.path} key={link.path}>{link.name}</Link>
+                    <Link to={link.path} key={link.path} className={styles.navLink}>{link.name}</Link>
                 ))}
             </nav>
-            <div className="header-icons">
-                <a href="#" className="account">My Account</a>
-                <a href="#" className="cart">🛒</a>
+            <div className={styles.headerIcons}>
+                <a href="#" className={styles.account}>My Account</a>
+                <a href="#" className={styles.cart}>🛒</a>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default Navigation;
