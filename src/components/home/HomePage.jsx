@@ -1,22 +1,23 @@
-import React, { useState, useEffect }  from "react";
-import {promoList} from './HomeData';
+import React, { useState, useEffect } from "react";
+import { promoList } from './HomeData';
 import Promo from './Promo.jsx';
-import axios from 'axios'
-import './HomePage.css'
+import axios from 'axios';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
     return (
         <>
             <main>
-                <section className="promo">
-                    <Promo className='promo-left'  {...promoList[0]}/>
-                    <div className="promo-center">
+                <section className={styles.promo}>
+                    <Promo className={styles.promoLeft} {...promoList[0]} />
+                    <div className={styles.promoCenter}>
                         <img
-                            src="http://localhost:9000/orders-images/8c8fa318-627b-41d3-884c-c43b677c05f2-kaktus_neon_temnyj_163081_3840x2160.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minio%2F20241205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241205T183637Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1d17870300ba93fc0fff0e33f272b77bc453d0e0eb9ecd6861a813d5bfb7e6b1"
-                            alt="The Final Shape Promo"/>
+                            src="https://steamuserimages-a.akamaihd.net/ugc/2496760306132372866/2C8FCB0E50B6D92EB5AF3CED3D67A8A006C89E41/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"
+                            alt="The Final Shape Promo"
+                        />
                     </div>
-                    <Promo className='promo-right' {...promoList[1]}/>
-                    <button onClick={logout}>Logout</button>
+                    <Promo className={styles.promoRight} {...promoList[1]} />
+                    <button onClick={logout} className={styles.logoutBtn}>Logout</button>
                 </section>
             </main>
         </>
@@ -25,11 +26,10 @@ const HomePage = () => {
 
 const logout = async () => {
     try {
-        const response = await axios.post('http://localhost/api/auth/logout', {}, {withCredentials: true}); // Отправляем запрос на выход с cookie
+        const response = await axios.post('http://localhost/api/auth/logout', {}, { withCredentials: true });
     } catch (err) {
         console.error('Failed to logout:', err);
     }
 };
-
 
 export default HomePage;
