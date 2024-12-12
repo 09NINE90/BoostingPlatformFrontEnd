@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import './LoginForm.css'
-import axios from 'axios'
-import {useNavigate} from "react-router-dom";
-import InputGroup from './InputGroup.jsx'
+import React, { useState } from 'react';
+import styles from './LoginForm.module.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import InputGroup from './InputGroup.jsx';
 
 export default function LoginForm() {
     const [username, setUsername] = useState('');
@@ -11,47 +11,51 @@ export default function LoginForm() {
     const navigate = useNavigate();
 
     const onChangePasswordInput = (e) => {
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
 
     const onChangeUsernameInput = (e) => {
-        setUsername(e.target.value)
-    }
+        setUsername(e.target.value);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost/api/auth/login', {
-                username,
-                password
-            } , { withCredentials: true });
-            navigate('/homePage')
+            const response = await axios.post(
+                'http://localhost/api/auth/login',
+                {
+                    username,
+                    password,
+                },
+                { withCredentials: true }
+            );
+            navigate('/homePage');
         } catch (err) {
             setError('Invalid credentials');
         }
     };
 
     return (
-        <div className="form-container">
-            <h2>Sign in</h2>
-            {error && <p style={{color: 'red'}}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <InputGroup
-                    type="text"
-                    value={username}
-                    onChange={onChangeUsernameInput}
-                    title="Login"
-                />
-                <InputGroup
-                    type="password"
-                    value={password}
-                    onChange={onChangePasswordInput}
-                    title="Password"
-                />
-                <button type="submit" className="btn">Sign in</button>
-            </form>
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
+                <h2>Sign in</h2>
+                {error && <p className={styles.error}>{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <InputGroup
+                        type="text"
+                        value={username}
+                        onChange={onChangeUsernameInput}
+                        title="Login"
+                    />
+                    <InputGroup
+                        type="password"
+                        value={password}
+                        onChange={onChangePasswordInput}
+                        title="Password"
+                    />
+                    <button type="submit" className={styles.btn}>Sign in</button>
+                </form>
+            </div>
         </div>
     );
 }
-
-
