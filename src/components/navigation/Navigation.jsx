@@ -1,18 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import './Navigation.css'
+import {LinksData} from './LinksData.js'
+import { Link } from "react-router";
 
-export default function Navigation() {
+const Navigation = () => {
     return (
         <header>
             <div className="logo">Dead PackMan</div>
             <nav>
-                <ul className="nav-links">
-                    <NavItem link = "/" name = "Home"/>
-                    <NavItem link = "/" name = "Services"/>
-                    <NavItem link = "/" name = "Support"/>
-                    <NavItem link = "/LoginForm" name = "LoginPage"/>
-                </ul>
+                {LinksData.map((link) => (
+                    <Link to={link.path} key={link.path}>{link.name}</Link>
+                ))}
             </nav>
             <div className="header-icons">
                 <a href="#" className="account">My Account</a>
@@ -22,10 +20,4 @@ export default function Navigation() {
     )
 }
 
-function NavItem(props) {
-    return (
-        <li>
-            <Link to={props.link}>{props.name}</Link>
-        </li>
-    )
-}
+export default Navigation;
