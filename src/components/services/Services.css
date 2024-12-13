@@ -87,3 +87,68 @@ main{
 .card button:hover {
     background-color: #e04343;
 }
+/* Контейнер для категорий */
+.category-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Строка категорий (все категории одного уровня будут в этой строке) */
+.category-row {
+    display: flex;
+    flex-wrap: wrap;  /* Разрешаем перенос категорий, если не помещаются */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Кнопка категории */
+.category-button {
+    background-color: #2d2c3c;
+    color: #fff;
+    border: 1px solid #4a4a6a;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-width: 120px; /* Задаем минимальную ширину для кнопок */
+    text-align: center;
+}
+
+/* Ховер эффект для кнопки */
+.category-button:hover {
+    background-color: #4a4a6a;
+    color: #ff4c4c;
+}
+
+/* Стиль для активной категории */
+.category-button.active {
+    background-color: #ff4c4c;
+    color: white;
+    font-weight: bold;
+}
+
+/* Стиль для подкатегорий (сдвиг на уровень ниже) */
+.subcategory-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.subcategory-button {
+    background-color: #4a4a6a;
+    color: #fff;
+    border: 1px solid #4a4a6a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ховер эффект для подкатегорий */
+.subcategory-button:hover {
+    background-color: #ff4c4c;
+    color: white;
+}

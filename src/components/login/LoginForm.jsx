@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import InputGroup from "./InputGroup.jsx";
 
+
 export default function LoginForm() {
 
     useEffect(() => {
@@ -28,26 +29,31 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="form-container">
-            <h2>Sign in</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <InputGroup
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    title="Login"
-                />
-                <InputGroup
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    title="Password"
-                />
-                <button type="submit" className="btn" disabled={status === "loading"}>
-                    {status === "loading" ? "Signing in..." : "Sign in"}
-                </button>
-            </form>
-        </div>
+        <>
+            <div className="container">
+                <div className="form-container">
+                    <h2>Sign in</h2>
+                    {error && <p style={{color: "red"}}>{error}</p>}
+                    <form onSubmit={handleSubmit}>
+                        <InputGroup
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            title="Login"
+                        />
+                        <InputGroup
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            title="Password"
+                        />
+                        <button type="submit" className="btn" disabled={status === "loading"}>
+                            {status === "loading" ? "Signing in..." : "Sign in"}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </>
+
     );
 }
