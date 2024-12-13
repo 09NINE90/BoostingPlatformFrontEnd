@@ -115,14 +115,13 @@ const Navigation = () => {
                     );
                 })}
             </nav>
-            <div className="auth-actions">
+
+            <div className="header-icons">
                 {isAuthenticated ? (
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
                     <NavLink to="/loginForm">Sign in</NavLink>
                 )}
-            </div>
-            <div className="header-icons">
                 <a href="#" className="account">My Account</a>
                 <a href="#" className="cart" aria-label="Cart">
                     🛒
