@@ -5,6 +5,8 @@ import './DropdownMenu.css';
 import {useSelector, useDispatch} from "react-redux";
 import {logout, selectAuth} from "/src/store/authSlice.js";
 import axios from 'axios'
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 
 const Navigation = () => {
 
@@ -41,7 +43,7 @@ const Navigation = () => {
 
     const fetchGames = async () => {
         try {
-            const response = await axios.get('http://localhost/games/getAllGames', { withCredentials: true });
+            const response = await axios.get(`${baseUrl}/games/getAllGames`, { withCredentials: true });
             setGames(response.data); // Ожидается, что сервер возвращает массив игр
         } catch (error) {
             console.error('Failed to fetch games:', error);
@@ -115,14 +117,13 @@ const Navigation = () => {
                     );
                 })}
             </nav>
-            <div className="auth-actions">
+
+            <div className="header-icons">
                 {isAuthenticated ? (
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
                     <NavLink to="/loginForm">Sign in</NavLink>
                 )}
-            </div>
-            <div className="header-icons">
                 <a href="#" className="account">My Account</a>
                 <a href="#" className="cart" aria-label="Cart">
                     🛒

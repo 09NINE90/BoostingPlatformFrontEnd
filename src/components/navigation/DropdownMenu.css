@@ -17,7 +17,7 @@
     transform: translateY(-10px);
     transition: all 0.3s ease;
     overflow-y: auto;
-    height: 50vh;
+    max-height: 50vh;
 }
 
 .dropdown-menu::-webkit-scrollbar {
