@@ -2,32 +2,49 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-
-export const login = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
-    try {
-        const response = await axios.post(`${baseUrl}/api/auth/login`, credentials, {withCredentials: true});
-        return response.data;
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.response.data || "Login failed");
+export const register = createAsyncThunk(
+    "auth/register",
+    async (userData, thunkAPI) => {
+        try {
+            const response = await axios.post(`${baseUrl}/api/auth/signUp`, userData, { withCredentials: true });
+            return response.data; // Успешная регистрация возвращает данные пользователя
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data || "Registration failed");
+        }
     }
+);
+
+export const login = createAsyncThunk(
+    "auth/signIn-Up",
+    async (credentials, thunkAPI) => {
+        try {
+            const response = await axios.post(`${baseUrl}/api/auth/signIn`, credentials, {withCredentials: true});
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data || "Login failed");
+        }
 });
 
-export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-    try {
-        await axios.post(`${baseUrl}/api/auth/logout`, {}, {withCredentials: true});
-        return true;
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.response?.data || "Logout failed");
-    }
+export const logout = createAsyncThunk(
+    "auth/logout",
+    async (_, thunkAPI) => {
+        try {
+            await axios.post(`${baseUrl}/api/auth/logout`, {}, {withCredentials: true});
+            return true;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data || "Logout failed");
+        }
 });
 
-export const fetchCurrentUser = createAsyncThunk("auth/fetchCurrentUser", async (_, thunkAPI) => {
-    try {
-        const response = await axios.get(`${baseUrl}/api/auth/me`, {withCredentials: true});
-        return response.data; // Ожидается, что сервер вернёт { username: "user", roles: ["admin"] }
-    } catch (error) {
-        return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch user");
-    }
+export const fetchCurrentUser = createAsyncThunk(
+    "auth/fetchCurrentUser",
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get(`${baseUrl}/api/auth/me`, {withCredentials: true});
+            return response.data; // Ожидается, что сервер вернёт { username: "user", roles: ["admin"] }
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch user");
+        }
 });
 
 const authSlice = createSlice({
@@ -81,6 +98,21 @@ const authSlice = createSlice({
                 state.role = null;
                 state.username = null;
                 state.error = action.payload || "Failed to fetch user";
+            })
+            // Регистрация
+            .addCase(register.pending, (state) => {
+                state.status = "loading";
+                state.error = null;
+            })
+            .addCase(register.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.isAuthenticated = true; // Можно сразу считать, что пользователь авторизован после регистрации
+                state.username = action.payload.username; // Сохраняем имя пользователя
+                state.role = action.payload.roles[0]; // Сохраняем первую роль
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload || "Registration failed";
             });
     },
 });

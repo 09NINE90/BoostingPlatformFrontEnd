@@ -122,7 +122,7 @@ const Navigation = () => {
                 {isAuthenticated ? (
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
-                    <NavLink to="/loginForm">Sign in</NavLink>
+                    <NavLink to="/signInForm">Sign in</NavLink>
                 )}
                 <a href="#" className="account">My Account</a>
                 <a href="#" className="cart" aria-label="Cart">
