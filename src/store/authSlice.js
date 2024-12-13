@@ -1,9 +1,11 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 
 export const login = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
     try {
-        const response = await axios.post("http://localhost/api/auth/login", credentials, {withCredentials: true});
+        const response = await axios.post(`${baseUrl}/api/auth/login`, credentials, {withCredentials: true});
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data || "Login failed");
@@ -12,7 +14,7 @@ export const login = createAsyncThunk("auth/login", async (credentials, thunkAPI
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     try {
-        await axios.post("http://localhost/api/auth/logout", {}, {withCredentials: true});
+        await axios.post(`${baseUrl}/api/auth/logout`, {}, {withCredentials: true});
         return true;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response?.data || "Logout failed");
@@ -21,7 +23,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 
 export const fetchCurrentUser = createAsyncThunk("auth/fetchCurrentUser", async (_, thunkAPI) => {
     try {
-        const response = await axios.get("http://localhost/api/auth/me", {withCredentials: true});
+        const response = await axios.get(`${baseUrl}/api/auth/me`, {withCredentials: true});
         return response.data; // Ожидается, что сервер вернёт { username: "user", roles: ["admin"] }
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch user");
