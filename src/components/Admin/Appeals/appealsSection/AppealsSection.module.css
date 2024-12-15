@@ -1,0 +1,45 @@
+.appealsSection {
+    padding: 20px;
+    background-color: #1c1b29;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filterContainer input,
+.filterContainer select,
+.filterContainer button {
+    padding: 10px;
+    border: 1px solid #3a3950;
+    border-radius: 5px;
+    background-color: #2d2c3c;
+    color: #fff;
+    font-size: 14px;
+}
+
+.filterContainer button {
+    background-color: #6a6ad8;
+    cursor: pointer;
+}
+
+.filterContainer button:hover {
+    background-color: #5050d0;
+}
+
+/* Сомнительная реализация, мне больше нравится без */
+
+/*.appealsList {*/
+/*    background-color: #2d2c3c;*/
+/*    border-radius: 10px;*/
+/*    overflow-y: auto;*/
+/*    height: calc(100vh - 200px);*/
+/*    padding: 15px;*/
+/*}*/

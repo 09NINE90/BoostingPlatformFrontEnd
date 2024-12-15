@@ -1,0 +1,108 @@
+.appealDetails p {
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.appealDetails p strong {
+    color: #9d9dff;
+}
+
+.chatSection {
+    background-color: #3a3950;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 300px;
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #2d2c3c;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #6a6ad8;
+    color: #fff;
+}
+
+.customer {
+    font-weight: bold;
+    color: #ff5722;
+}
+
+.moderator {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.chatInput {
+    display: flex;
+    gap: 10px;
+}
+
+.chatInput input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2d2c3c;
+    color: #fff;
+}
+
+.chatInput button {
+    padding: 10px 15px;
+    background-color: #6a6ad8;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.chatInput button:hover {
+    background-color: #5050d0;
+}
+
+.appealActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.actionBtn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.acceptBtn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.rejectBtn {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.acceptBtn:hover {
+    background-color: #45a049;
+}
+
+.rejectBtn:hover {
+    background-color: #e64a19;
+}

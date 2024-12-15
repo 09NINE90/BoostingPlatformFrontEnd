@@ -1,0 +1,40 @@
+.appealItem {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #3a3950;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.appealItem:hover {
+    background-color: #5050d0;
+    transform: scale(1.02);
+}
+
+.appealDate {
+    color: #9d9dff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.solved {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.status.in_progress {
+    background-color: #ff9800;
+    color: #fff;
+}
