@@ -1,0 +1,48 @@
+.orderSection {
+    padding: 20px;
+    background-color: #232234;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.orderTable {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.orderHeader, .orderRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 15px;
+    background-color: #2a2750;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.orderHeader {
+    font-weight: bold;
+    background-color: #333152;
+}
+
+.orderRow {
+    background-color: #23203f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orderRow:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.actionBtn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
