@@ -1,0 +1,45 @@
+.reviewItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 4fr auto;
+    align-items: center;
+    background-color: #3a3950;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviewItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.reviewItem p {
+    margin: 0;
+    font-size: 14px;
+    color: #b0b0b0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.reviewText {
+    font-size: 14px;
+    color: #b0b0b0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.settingsBtn {
+    background: none;
+    border: none;
+    color: #6a6ad8;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.settingsBtn:hover {
+    color: #5050d0;
+}

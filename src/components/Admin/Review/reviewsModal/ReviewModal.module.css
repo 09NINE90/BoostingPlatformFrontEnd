@@ -1,0 +1,50 @@
+.editBtn,
+.applyBtn,
+.rejectBtn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.editBtn {
+    background-color: #ffa500;
+    color: #fff;
+}
+
+.editBtn:hover {
+    background-color: #e69500;
+}
+
+.applyBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+}
+
+.applyBtn:hover {
+    background-color: #5050d0;
+}
+
+.rejectBtn {
+    background-color: #ff4c4c;
+    color: #fff;
+}
+
+.rejectBtn:hover {
+    background-color: #d93636;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

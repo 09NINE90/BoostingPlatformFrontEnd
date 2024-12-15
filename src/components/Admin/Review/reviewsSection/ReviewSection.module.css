@@ -1,0 +1,10 @@
+.reviewsSection {
+    padding: 20px;
+    color: #fff;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
