@@ -1,0 +1,40 @@
+.banBtn,
+.fineBtn,
+.applyBtn {
+    padding: 10px 20px;
+    margin-left: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.banBtn {
+    background-color: #ff4c4c;
+    color: #fff;
+
+}
+
+.banBtn:hover {
+    background-color: #d93636;
+}
+
+.fineBtn {
+    background-color: #ffa500;
+    color: #fff;
+}
+
+.fineBtn:hover {
+    background-color: #e69500;
+}
+
+.applyBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+}
+
+.applyBtn:hover {
+    background-color: #5050d0;
+}

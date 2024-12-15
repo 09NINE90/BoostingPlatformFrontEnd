@@ -1,0 +1,75 @@
+.usersSection {
+    padding: 20px;
+    color: #fff;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filterContainer input,
+.filterContainer select {
+    padding: 12px;
+    border: 1px solid #3a3950;
+    border-radius: 5px;
+    background-color: #2d2c3c;
+    color: #fff;
+}
+
+.filterContainer button {
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #6a6ad8;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filterContainer button:hover {
+    background-color: #5050d0;
+}
+
+.usersList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userItem {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 15px;
+    background-color: #3a3950;
+    padding: 10px 15px;
+    border-radius: 5px;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.userItem:hover {
+    background-color: #5050d0;
+    transform: scale(1.02);
+}
+
+.userItem span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settingsBtn {
+    background: none;
+    border: none;
+    color: #6a6ad8;
+    font-size: 16px;
+    cursor: pointer;
+    justify-self: end;
+    transition: color 0.3s ease;
+}
+
+.settingsBtn:hover {
+    color: #5050d0;
+}
