@@ -1,0 +1,33 @@
+.payoutItem {
+    background-color: #3a3950;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.payoutItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.payoutInfo p {
+    margin: 5px 0;
+    color: #b0b0b0;
+}
+
+.viewBtn {
+    background-color: #6a6ad8;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.viewBtn:hover {
+    background-color: #5050d0;
+}

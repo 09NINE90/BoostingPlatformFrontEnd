@@ -1,0 +1,38 @@
+.applyBtn {
+    background: linear-gradient(135deg, #6a6ad8, #5050d0);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.applyBtn:hover {
+    background: linear-gradient(135deg, #5050d0, #6a6ad8);
+    transform: scale(1.05);
+}
+
+.rejectBtn {
+    background: linear-gradient(135deg, #ff4c4c, #d93636);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.rejectBtn:hover {
+    background: linear-gradient(135deg, #d93636, #ff4c4c);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
