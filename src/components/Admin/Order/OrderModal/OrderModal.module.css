@@ -1,0 +1,228 @@
+/* Левая панель - Order Information */
+.orderInfo {
+    background-color: #3a3950;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.orderInfo h3 {
+    color: #6a6ad8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.setupBtn,
+.completeBtn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.setupBtn {
+    background-color: #6a6ad8;
+}
+
+.setupBtn:hover {
+    background-color: #5050d0;
+}
+
+.completeBtn {
+    background-color: #4caf50;
+}
+
+.completeBtn:hover {
+    background-color: #45a049;
+}
+
+/* Центр - Чат */
+.chatSection {
+    background-color: #3a3950;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #2d2c3c;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.message p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.message .timestamp {
+    font-size: 12px;
+    color: #9d9dff;
+    margin-top: 5px;
+}
+
+.chatInput {
+    display: flex;
+    gap: 10px;
+}
+
+.chatInput input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2d2c3c;
+    color: #fff;
+}
+
+.chatInput button {
+    padding: 10px 15px;
+    background-color: #6a6ad8;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.chatInput button:hover {
+    background-color: #5050d0;
+}
+
+/* Правая панель - Additional Information */
+.additionalInfo {
+    background-color: #3a3950;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.additionalInfo h3 {
+    color: #6a6ad8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+/* Модальное окно изменения цены и бонуса*/
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1100; /* Выше основного модального окна */
+}
+
+.editModal {
+    background-color: #3a3950;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.9);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1101;
+}
+
+.editModal input,
+.editModal textarea {
+    width: 94%; /* Установлено 100% для удобного заполнения */
+    padding: 12px;
+    border: 1px solid #3a3950;
+    border-radius: 8px;
+    background-color: #1c1b29;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 15px;
+    resize: none; /* Убрано изменение размера */
+}
+
+
+
+.editModalBody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.gearButton {
+    background: none;
+    border: none;
+    color: #6a6ad8;
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.gearButton:hover {
+    color: #5050d0;
+}
+
+.modalActions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modalActions button:first-of-type {
+    background-color: #ff4c4c;
+    color: #fff;
+}
+
+.modalActions button:first-of-type:hover {
+    background-color: #d93636;
+    color: #fff;
+}
+
+.modalActions button:last-of-type {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.modalActions button:last-of-type:hover {
+    background-color: #45a049;
+    color: #fff;
+}
