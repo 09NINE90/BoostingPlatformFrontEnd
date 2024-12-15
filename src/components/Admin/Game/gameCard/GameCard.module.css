@@ -1,0 +1,33 @@
+.gameItem {
+    background: linear-gradient(90deg, #2d2c3c, #3a3950);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.gameItem:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.gameThumbnail {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #6a6ad8;
+}
+
+.settingsBtn {
+    background: none;
+    border: none;
+    color: #6a6ad8;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.settingsBtn:hover {
+    color: #5050d0;
+}
