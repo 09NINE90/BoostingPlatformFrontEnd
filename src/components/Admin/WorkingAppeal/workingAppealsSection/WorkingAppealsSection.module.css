@@ -1,0 +1,37 @@
+.workingAppealsSection {
+    padding: 20px;
+    color: #fff;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filterContainer input {
+    padding: 12px;
+    border: 1px solid #3a3950;
+    border-radius: 5px;
+    background-color: #2d2c3c;
+    color: #fff;
+}
+
+.filterContainer button {
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #6a6ad8;
+    color: #fff;
+    cursor: pointer;
+}
+
+.filterContainer button:hover {
+    background-color: #5050d0;
+}
+
+.appealsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

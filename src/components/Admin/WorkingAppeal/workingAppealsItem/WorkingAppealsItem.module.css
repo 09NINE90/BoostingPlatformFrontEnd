@@ -1,0 +1,34 @@
+.appealItem {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr auto;
+    gap: 15px;
+    background-color: #3a3950;
+    padding: 10px 15px;
+    border-radius: 5px;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.appealItem:hover {
+    background-color: #5050d0;
+    transform: scale(1.02);
+}
+
+.appealItem span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.viewBtn {
+    background: none;
+    border: none;
+    color: #6a6ad8;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.viewBtn:hover {
+    color: #5050d0;
+}

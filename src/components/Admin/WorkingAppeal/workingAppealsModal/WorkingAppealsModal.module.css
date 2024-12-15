@@ -1,0 +1,51 @@
+.modalBody p {
+    color: #b0b0b0;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.modalActions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.approveBtn,
+.denyBtn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.approveBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+}
+
+.approveBtn:hover {
+    background-color: #5050d0;
+}
+
+.approveBtn:active {
+    transform: scale(0.95);
+}
+
+.denyBtn {
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+}
+
+.denyBtn:hover {
+    background-color: #d93636;
+}
+
+.denyBtn:active {
+    transform: scale(0.95);
+}
