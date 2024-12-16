@@ -51,6 +51,8 @@ const authSlice = createSlice({
     name: "auth",
     initialState: {
         isAuthenticated: false,
+        role: null,
+        username: null,
         status: "idle", // idle | loading | succeeded | failed
         error: null,
     },
@@ -62,9 +64,11 @@ const authSlice = createSlice({
                 state.status = "loading";
                 state.error = null;
             })
-            .addCase(login.fulfilled, (state) => {
+            .addCase(login.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isAuthenticated = true;
+                state.role = action.payload.roles[0]; // Устанавливаем первую роль
+                state.username = action.payload.username; // Сохраняем имя пользователя
             })
             .addCase(login.rejected, (state, action) => {
                 state.status = "failed";
@@ -77,6 +81,8 @@ const authSlice = createSlice({
             .addCase(logout.fulfilled, (state) => {
                 state.status = "succeeded";
                 state.isAuthenticated = false;
+                state.role = null; // Сбрасываем роль
+                state.username = null; // Сбрасываем имя пользователя
             })
             .addCase(logout.rejected, (state, action) => {
                 state.status = "failed";
@@ -89,14 +95,14 @@ const authSlice = createSlice({
             .addCase(fetchCurrentUser.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isAuthenticated = true;
-                state.role = action.payload.roles[0]; // Сохраняем первую роль, если их несколько
-                state.username = action.payload.username;
+                state.role = action.payload.roles[0]; // Сохраняем первую роль
+                state.username = action.payload.username; // Сохраняем имя пользователя
             })
             .addCase(fetchCurrentUser.rejected, (state, action) => {
                 state.status = "failed";
                 state.isAuthenticated = false;
-                state.role = null;
-                state.username = null;
+                state.role = null; // Сбрасываем роль
+                state.username = null; // Сбрасываем имя пользователя
                 state.error = action.payload || "Failed to fetch user";
             })
             // Регистрация
@@ -106,7 +112,7 @@ const authSlice = createSlice({
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.isAuthenticated = true; // Можно сразу считать, что пользователь авторизован после регистрации
+                state.isAuthenticated = true; // Пользователь авторизован после регистрации
                 state.username = action.payload.username; // Сохраняем имя пользователя
                 state.role = action.payload.roles[0]; // Сохраняем первую роль
             })
@@ -122,5 +128,6 @@ export const selectRole = (state) => state.auth.role;
 export const selectUsername = (state) => state.auth.username;
 export const selectAuthError = (state) => state.auth.error;
 export const selectAuthStatus = (state) => state.auth.status;
+export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
 
 export default authSlice.reducer;

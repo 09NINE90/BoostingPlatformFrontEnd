@@ -7,14 +7,12 @@ import {logout, selectAuth} from "/src/store/authSlice.js";
 import axios from 'axios'
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-
 const Navigation = () => {
 
     const isAuthenticated = useSelector(selectAuth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // Состояние для хранения игр
     const [games, setGames] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -23,7 +21,7 @@ const Navigation = () => {
             .unwrap()
             .then(() => {
                 console.log("Logged out successfully");
-                navigate("/homePage");
+                navigate("/signInForm");
             })
             .catch((error) => {
                 console.error("Logout failed:", error);
