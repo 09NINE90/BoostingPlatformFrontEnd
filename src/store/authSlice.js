@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -15,42 +15,53 @@ export const register = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-    "auth/signIn-Up",
+    "auth/authorization",
     async (credentials, thunkAPI) => {
         try {
-            const response = await axios.post(`${baseUrl}/api/auth/signIn`, credentials, {withCredentials: true});
-            return response.data;
+            const response = await axios.post(`${baseUrl}/api/auth/signIn`, credentials, { withCredentials: true });
+            return response.data; // Данные с токеном и ролями
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.response.data || "Login failed");
+            return thunkAPI.rejectWithValue(error.response?.data || "Login failed");
         }
-});
+    }
+);
 
 export const logout = createAsyncThunk(
     "auth/logout",
     async (_, thunkAPI) => {
         try {
-            await axios.post(`${baseUrl}/api/auth/logout`, {}, {withCredentials: true});
+            await axios.post(`${baseUrl}/api/auth/logout`, {}, { withCredentials: true });
             return true;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response?.data || "Logout failed");
         }
-});
+    }
+);
+
+
+// Глобально включаем отправку куки
+axios.defaults.withCredentials = true;
 
 export const fetchCurrentUser = createAsyncThunk(
     "auth/fetchCurrentUser",
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get(`${baseUrl}/api/auth/me`, {withCredentials: true});
-            return response.data; // Ожидается, что сервер вернёт { username: "user", roles: ["admin"] }
+            const response = await axios.get(`${baseUrl}/api/auth/me`);
+            return response.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.response?.data || "Failed to fetch user");
+            return thunkAPI.rejectWithValue("Не удалось получить пользователя");
         }
-});
+    }
+);
+
+
 
 const authSlice = createSlice({
     name: "auth",
     initialState: {
         isAuthenticated: false,
+        role: null,
+        username: null,
         status: "idle", // idle | loading | succeeded | failed
         error: null,
     },
@@ -62,9 +73,11 @@ const authSlice = createSlice({
                 state.status = "loading";
                 state.error = null;
             })
-            .addCase(login.fulfilled, (state) => {
+            .addCase(login.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isAuthenticated = true;
+                state.role = action.payload.roles[0];
+                state.username = action.payload.username;
             })
             .addCase(login.rejected, (state, action) => {
                 state.status = "failed";
@@ -77,6 +90,8 @@ const authSlice = createSlice({
             .addCase(logout.fulfilled, (state) => {
                 state.status = "succeeded";
                 state.isAuthenticated = false;
+                state.role = null;
+                state.username = null;
             })
             .addCase(logout.rejected, (state, action) => {
                 state.status = "failed";
@@ -89,8 +104,8 @@ const authSlice = createSlice({
             .addCase(fetchCurrentUser.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.isAuthenticated = true;
-                state.role = action.payload.roles[0]; // Сохраняем первую роль, если их несколько
-                state.username = action.payload.username;
+                state.role = action.payload.roles?.[0]; // Сохраняем первую роль
+                state.username = action.payload.username; // Сохраняем имя пользователя
             })
             .addCase(fetchCurrentUser.rejected, (state, action) => {
                 state.status = "failed";
@@ -106,9 +121,9 @@ const authSlice = createSlice({
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                state.isAuthenticated = true; // Можно сразу считать, что пользователь авторизован после регистрации
-                state.username = action.payload.username; // Сохраняем имя пользователя
-                state.role = action.payload.roles[0]; // Сохраняем первую роль
+                state.isAuthenticated = true;
+                state.username = action.payload.username;
+                state.role = action.payload.roles[0];
             })
             .addCase(register.rejected, (state, action) => {
                 state.status = "failed";
