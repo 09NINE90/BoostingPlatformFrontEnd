@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
 import axios from 'axios';
 import './Services.css';
 import CategoryButton from './CategoryButton';
+import Navigation from "../navigation/Navigation.jsx";
+
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const ServicesPage = () => {
@@ -11,7 +13,7 @@ const ServicesPage = () => {
     }, []);
 
     const location = useLocation();
-    const { game } = location.state || {};
+    const {game} = location.state || {};
     const [categories, setCategories] = useState([]);
     const [activeCategories, setActiveCategories] = useState([]);  // Состояние для активных категорий и подкатегорий
     const [orders, setOrders] = useState([]);
@@ -19,11 +21,11 @@ const ServicesPage = () => {
     const getAllOrders = async (categories = '') => {
         if (!game) return;
 
-        const gameRequest = { title: game.title };
-        const requestData = { game: gameRequest, categories: categories, pageNumber: 1, pageSize: 10 };
+        const gameRequest = {title: game.title};
+        const requestData = {game: gameRequest, categories: categories, pageNumber: 1, pageSize: 10};
 
         try {
-            const response = await axios.post(`${baseUrl}/orders/getAllOrders`, requestData, { withCredentials: true });
+            const response = await axios.post(`${baseUrl}/orders/getAllOrders`, requestData, {withCredentials: true});
             setOrders(response.data.baseOrder); // Сохраняем полученные заказы в состоянии
         } catch (err) {
             console.error('Ошибка при получении заказов:', err);
@@ -75,65 +77,69 @@ const ServicesPage = () => {
     }
 
     return (
-        <main>
-            <div className="game-header">
-                <h1>{game.title} Boosting Services</h1>
-                <p>{game.description || "Описание отсутствует."}</p>
-            </div>
-
-            {/* Контейнер категорий */}
-            <div className="category-container" id="categoryContainer">
-                <div className="category-row">
-                    {categories.length > 0 ? (
-                        categories.map((category) => (
-                            <CategoryButton
-                                key={category.name}
-                                category={category}
-                                handleCategoryClick={handleCategoryClick}
-                                isActive={activeCategories.some((activeCategory) => activeCategory.name === category.name)}
-                            />
-                        ))
-                    ) : (
-                        <p>Загружаются категории...</p>
-                    )}
+        <>
+            <Navigation/>
+            <main>
+                <div className="game-header">
+                    <h1>{game.title} Boosting Services</h1>
+                    <p>{game.description || "Описание отсутствует."}</p>
                 </div>
 
-                {/* Рендеринг подкатегорий по уровням */}
-                {activeCategories.map((category) => (
-                    <div key={category.name}>
-                        {category.subcategories && category.subcategories.length > 0 && (
-                            <div className="subcategory-container">
-                                {category.subcategories.map((subcat) => (
-                                    <button
-                                        key={subcat.name}
-                                        className="subcategory-button"
-                                        onClick={() => handleCategoryClick(subcat)}
-                                    >
-                                        {subcat.name}
-                                    </button>
-                                ))}
-                            </div>
+                {/* Контейнер категорий */}
+                <div className="category-container" id="categoryContainer">
+                    <div className="category-row">
+                        {categories.length > 0 ? (
+                            categories.map((category) => (
+                                <CategoryButton
+                                    key={category.name}
+                                    category={category}
+                                    handleCategoryClick={handleCategoryClick}
+                                    isActive={activeCategories.some((activeCategory) => activeCategory.name === category.name)}
+                                />
+                            ))
+                        ) : (
+                            <p>Загружаются категории...</p>
                         )}
                     </div>
-                ))}
-            </div>
 
-            {/* Отображаем заказы */}
-            <section className="services-container">
-                {orders.length > 0 ? (
-                    orders.map((order) => (
-                        <div key={order.id} className="card">
-                            <img src={order.imageUrl} alt={order.title} />
-                            <h3>{order.title}</h3>
-                            <p>{order.description}</p>
-                            <p>Цена: ${order.basePrice}</p>
+                    {/* Рендеринг подкатегорий по уровням */}
+                    {activeCategories.map((category) => (
+                        <div key={category.name}>
+                            {category.subcategories && category.subcategories.length > 0 && (
+                                <div className="subcategory-container">
+                                    {category.subcategories.map((subcat) => (
+                                        <button
+                                            key={subcat.name}
+                                            className="subcategory-button"
+                                            onClick={() => handleCategoryClick(subcat)}
+                                        >
+                                            {subcat.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
-                    ))
-                ) : (
-                    <p>No orders by this game</p>
-                )}
-            </section>
-        </main>
+                    ))}
+                </div>
+
+                {/* Отображаем заказы */}
+                <section className="services-container">
+                    {orders.length > 0 ? (
+                        orders.map((order) => (
+                            <div key={order.id} className="card">
+                                <img src={order.imageUrl} alt={order.title}/>
+                                <h3>{order.title}</h3>
+                                <p>{order.description}</p>
+                                <p>Цена: ${order.basePrice}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No orders by this game</p>
+                    )}
+                </section>
+            </main>
+        </>
+
     );
 };
 

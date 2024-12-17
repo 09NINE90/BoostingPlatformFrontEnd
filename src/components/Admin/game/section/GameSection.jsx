@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import AddGameModal from "../GameModal/AddGameModal.jsx";
-import GameCard from "../gameCard/GameCard.jsx";
+import AddGameModal from "../modal/AddGameModal.jsx";
+import GameCard from "../card/GameCard.jsx";
 import styles from "./GameSection.module.css";
 import axios from "axios";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ModalTemplate from "src/components/Utils/modalTemplate/ModalTemplate.jsx";
+import ModalTemplate from "src/components/utils/modalTemplate/ModalTemplate.jsx";
 import modalStyles from "./GameModal.module.css";
 
 const EditGameModal = ({ isOpen, onClose, gameData, onSave }) => {

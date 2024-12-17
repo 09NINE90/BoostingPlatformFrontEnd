@@ -29,14 +29,14 @@ const Navigation = () => {
     };
 
     const guestLinks = [
-        {path: "/homePage", name: "Home"},
-        {path: "/servicesPage", name: "Service"},
+        {path: "/home", name: "Home"},
+        {path: "/services", name: "Service"},
         {path: "/#", name: "Reviews"},
     ];
 
     const userLinks = [
-        {path: "/homePage", name: "Home"},
-        {path: "/servicesPage", name: "Service"},
+        {path: "/home", name: "Home"},
+        {path: "/services", name: "Service"},
     ];
 
     const fetchGames = async () => {
@@ -88,7 +88,7 @@ const Navigation = () => {
                                             games.map((game) => (
                                                 <NavLink
                                                     key={game.id}
-                                                    to={`/servicesPage`}
+                                                    to={`/services`}
                                                     state={{ game }}
                                                     className="dropdown-item"
                                                 >

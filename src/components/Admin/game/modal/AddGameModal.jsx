@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalTemplate from "../../../Utils/modalTemplate/ModalTemplate.jsx";
+import ModalTemplate from "../../../utils/modalTemplate/ModalTemplate.jsx";
 import modalStyles from "./GameModal.module.css";
 import axios from "axios";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -63,7 +63,7 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
         }
 
         // Вывод JSON в консоль
-        console.log("Сохранённые данные игры:", JSON.stringify(gameData, null, 2));
+        // console.log("Сохранённые данные игры:", JSON.stringify(gameData, null, 2));
 
         onSave(gameData);
         onClose();

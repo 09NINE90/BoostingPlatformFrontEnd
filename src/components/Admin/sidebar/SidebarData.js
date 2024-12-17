@@ -1,5 +1,5 @@
 const SidebarData = [
-    { name: "Games", path: "/admin/gamePage" },
+    { name: "Games", path: "/admin/games" },
     { name: "Orders", path: "/admin/orderPage" },
     { name: "Sevices", path: "/admin/servicePage" },
     { name: "Appeals", path: "/admin/appealsPage" },
