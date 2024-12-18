@@ -14,6 +14,7 @@ const ServicesPage = () => {
 
     const location = useLocation();
     const {game} = location.state || {};
+    const [clickCategories, setClickCategories] = useState('');
     const [categories, setCategories] = useState([]);
     const [activeCategories, setActiveCategories] = useState([]);  // Состояние для активных категорий и подкатегорий
     const [orders, setOrders] = useState([]);
@@ -39,7 +40,6 @@ const ServicesPage = () => {
         try {
             const response = await fetch(endpoint);
             const gameData = await response.json();
-
             setCategories(gameData.categories || []);
             getAllOrders(); // Загружаем все заказы по умолчанию
         } catch (error) {
@@ -48,20 +48,19 @@ const ServicesPage = () => {
     };
 
     const handleCategoryClick = (category) => {
-        setActiveCategories((prevActiveCategories) => {
-            const newActiveCategories = [...prevActiveCategories];
-            const categoryIndex = prevActiveCategories.findIndex(
-                (activeCategory) => activeCategory.name === category.name
-            );
+        if (activeCategories.includes(category)) {
+            const index = activeCategories.findIndex((category) => category.name === clickCategories);
+            console.log(index);
+            const newActiveCategories = [...activeCategories];
 
-            if (categoryIndex === -1) {
-                newActiveCategories.push(category); // Добавляем категорию в список активных категорий
-            } else {
-                newActiveCategories.splice(categoryIndex + 1); // Очищаем дочерние категории
-            }
+            setActiveCategories(newActiveCategories.slice(0, index))
+            return
+        }
 
-            return newActiveCategories;
-        });
+        setActiveCategories((prevState) => ([
+            ...prevState,
+            category,
+        ]))
 
         getAllOrders(category.name); // Загружаем заказы для выбранной категории
     };
@@ -72,9 +71,18 @@ const ServicesPage = () => {
         }
     }, [game]);
 
+    useEffect(() => {
+
+    }, [activeCategories])
+
+
     if (!game) {
         return <p>Игра не выбрана. Вернитесь на главную страницу.</p>;
     }
+
+    console.log("activeCategories", activeCategories);
+
+    console.log("clickCategories", clickCategories);
 
     return (
         <>
@@ -93,7 +101,11 @@ const ServicesPage = () => {
                                 <CategoryButton
                                     key={category.name}
                                     category={category}
-                                    handleCategoryClick={handleCategoryClick}
+                                    handleCategoryClick={() => {
+                                        setClickCategories((category.name))
+                                        handleCategoryClick(category)
+
+                                    }}
                                     isActive={activeCategories.some((activeCategory) => activeCategory.name === category.name)}
                                 />
                             ))
@@ -103,23 +115,31 @@ const ServicesPage = () => {
                     </div>
 
                     {/* Рендеринг подкатегорий по уровням */}
-                    {activeCategories.map((category) => (
-                        <div key={category.name}>
-                            {category.subcategories && category.subcategories.length > 0 && (
-                                <div className="subcategory-container">
-                                    {category.subcategories.map((subcat) => (
-                                        <button
-                                            key={subcat.name}
-                                            className="subcategory-button"
-                                            onClick={() => handleCategoryClick(subcat)}
-                                        >
-                                            {subcat.name}
-                                        </button>
-                                    ))}
+                    {activeCategories.map((category) => {
+                            // if (category.name === clickCategories) return null
+
+                            return (
+                                <div key={category.name}>
+                                    {category.subcategories && category.subcategories.length > 0 && (
+                                        <div className="subcategory-container">
+                                            {category.subcategories.map((subcat) => (
+                                                <button
+                                                    key={subcat.name}
+                                                    className="subcategory-button"
+                                                    onClick={() => {
+                                                        setClickCategories(subcat.name)
+                                                        handleCategoryClick(subcat)
+                                                    }}
+                                                >
+                                                    {subcat.name}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    ))}
+                            )
+                        }
+                    )}
                 </div>
 
                 {/* Отображаем заказы */}

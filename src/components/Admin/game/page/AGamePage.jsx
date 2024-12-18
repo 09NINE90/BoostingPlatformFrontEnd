@@ -4,7 +4,7 @@ import GameSection from "../section/GameSection.jsx";
 
 import styles from "./GamePage.module.css";
 
-const GamePage = () => {
+const AGamePage = () => {
     return (
         <div className={styles.dashboard}>
             <Header />
@@ -16,4 +16,4 @@ const GamePage = () => {
     );
 };
 
-export default GamePage;
+export default AGamePage;

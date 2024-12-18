@@ -15,7 +15,7 @@ const GameSection = () => {
         const requestData = { pageNumber: pageNumber, pageSize: 10 };
 
         try {
-            const response = await axios.post(`${baseUrl}/games/getAllGames`, requestData, { withCredentials: true });
+            const response = await axios.post(`${baseUrl}/games/getAllGamesByPage`, requestData, { withCredentials: true });
             setGames(response.data.games); // Сохраняем полученные заказы в состоянии
         } catch (err) {
             console.error('Ошибка при получении заказов:', err);

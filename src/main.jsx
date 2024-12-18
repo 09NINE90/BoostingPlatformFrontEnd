@@ -5,7 +5,7 @@ import { store } from "./store/store";
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import AuthProvider from './components/authorization/provider/AuthProvider.tsx';
 import ProtectedRoute from './components/utils/routing/ProtectedRoute.tsx';
-import GamePage from "./components/Admin/game/page/GamePage.jsx";
+import AGamePage from "./components/Admin/game/page/AGamePage.jsx";
 import HomePage from "./components/home/HomePage.jsx";
 import SignInForm from "./components/authorization/SignInForm.jsx";
 import SignUpForm from "./components/authorization/SignUpForm.jsx";
@@ -13,6 +13,7 @@ import ServicesPage from "./components/services/ServicesPage.jsx";
 import { useEffect, useState } from "react";
 import { fetchCurrentUser } from './store/authSlice';
 import { useDispatch } from 'react-redux';
+import AServicesPage from "./components/Admin/services/page/AServicesPage.jsx";
 
 const root = document.getElementById('root');
 
@@ -33,7 +34,15 @@ const router = createBrowserRouter([
         path: '/admin/games',
         element: (
             <ProtectedRoute allowedRoles={['ADMIN']}>
-                <GamePage />
+                <AGamePage />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/admin/services',
+        element: (
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+                <AServicesPage />
             </ProtectedRoute>
         ),
     },
