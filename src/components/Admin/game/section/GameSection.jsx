@@ -1,9 +1,8 @@
+import styles from "./GameSection.module.css";
 import {useEffect, useState} from "react";
 import AddGameModal from "../modal/AddGameModal.jsx";
 import GameCard from "../card/GameCard.jsx";
-import styles from "./GameSection.module.css";
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import {getAllGamesByPageApi} from "../../../../api/gamesApi.jsx";
 
 const GameSection = () => {
     const [isAddGameModalOpen, setIsAddGameModalOpen] = useState(false);
@@ -15,8 +14,8 @@ const GameSection = () => {
         const requestData = { pageNumber: pageNumber, pageSize: 10 };
 
         try {
-            const response = await axios.post(`${baseUrl}/games/getAllGames`, requestData, { withCredentials: true });
-            setGames(response.data.games); // Сохраняем полученные заказы в состоянии
+            const response = await getAllGamesByPageApi(requestData);
+            setGames(response); // Сохраняем полученные заказы в состоянии
         } catch (err) {
             console.error('Ошибка при получении заказов:', err);
         }

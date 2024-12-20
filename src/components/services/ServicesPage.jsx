@@ -1,9 +1,9 @@
+import './Services.css';
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import axios from 'axios';
-import './Services.css';
 import CategoryButton from './CategoryButton';
-import Navigation from "../navigation/Navigation.jsx";
+import {getAllServicesApi} from "../../api/servicesApi.jsx";
+import {getGameByIdApi} from "../../api/gamesApi.jsx";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -14,56 +14,52 @@ const ServicesPage = () => {
 
     const location = useLocation();
     const {game} = location.state || {};
+    const [clickCategories, setClickCategories] = useState('');
     const [categories, setCategories] = useState([]);
     const [activeCategories, setActiveCategories] = useState([]);  // Состояние для активных категорий и подкатегорий
     const [orders, setOrders] = useState([]);
 
-    const getAllOrders = async (categories = '') => {
+    const getServices = async (categories = '') => {
         if (!game) return;
 
         const gameRequest = {title: game.title};
         const requestData = {game: gameRequest, categories: categories, pageNumber: 1, pageSize: 10};
 
         try {
-            const response = await axios.post(`${baseUrl}/orders/getAllOrders`, requestData, {withCredentials: true});
-            setOrders(response.data.baseOrder); // Сохраняем полученные заказы в состоянии
+            const response = await getAllServicesApi(requestData);
+            setOrders(response);
         } catch (err) {
             console.error('Ошибка при получении заказов:', err);
         }
     };
 
     const loadGameData = async () => {
-        const gameId = game.id; // Используем ID игры, полученной через react-router
-        const endpoint = `${baseUrl}/games/${gameId}`;
+        const gameId = game.id;
 
         try {
-            const response = await fetch(endpoint);
-            const gameData = await response.json();
-
+            const gameData = await getGameByIdApi(gameId);
             setCategories(gameData.categories || []);
-            getAllOrders(); // Загружаем все заказы по умолчанию
+            getServices(); // Загружаем все заказы по умолчанию
         } catch (error) {
             console.error("Ошибка загрузки данных игры:", error);
         }
     };
 
     const handleCategoryClick = (category) => {
-        setActiveCategories((prevActiveCategories) => {
-            const newActiveCategories = [...prevActiveCategories];
-            const categoryIndex = prevActiveCategories.findIndex(
-                (activeCategory) => activeCategory.name === category.name
-            );
+        if (activeCategories.includes(category)) {
+            const index = activeCategories.findIndex((category) => category.name === clickCategories);
+            const newActiveCategories = [...activeCategories];
 
-            if (categoryIndex === -1) {
-                newActiveCategories.push(category); // Добавляем категорию в список активных категорий
-            } else {
-                newActiveCategories.splice(categoryIndex + 1); // Очищаем дочерние категории
-            }
+            setActiveCategories(newActiveCategories.slice(0, index))
+            return
+        }
 
-            return newActiveCategories;
-        });
+        setActiveCategories((prevState) => ([
+            ...prevState,
+            category,
+        ]))
 
-        getAllOrders(category.name); // Загружаем заказы для выбранной категории
+        getServices(category.name); // Загружаем заказы для выбранной категории
     };
 
     useEffect(() => {
@@ -72,13 +68,17 @@ const ServicesPage = () => {
         }
     }, [game]);
 
+    useEffect(() => {
+
+    }, [activeCategories])
+
+
     if (!game) {
         return <p>Игра не выбрана. Вернитесь на главную страницу.</p>;
     }
 
     return (
         <>
-            <Navigation/>
             <main>
                 <div className="game-header">
                     <h1>{game.title} Boosting Services</h1>
@@ -93,7 +93,11 @@ const ServicesPage = () => {
                                 <CategoryButton
                                     key={category.name}
                                     category={category}
-                                    handleCategoryClick={handleCategoryClick}
+                                    handleCategoryClick={() => {
+                                        setClickCategories((category.name))
+                                        handleCategoryClick(category)
+
+                                    }}
                                     isActive={activeCategories.some((activeCategory) => activeCategory.name === category.name)}
                                 />
                             ))
@@ -103,23 +107,31 @@ const ServicesPage = () => {
                     </div>
 
                     {/* Рендеринг подкатегорий по уровням */}
-                    {activeCategories.map((category) => (
-                        <div key={category.name}>
-                            {category.subcategories && category.subcategories.length > 0 && (
-                                <div className="subcategory-container">
-                                    {category.subcategories.map((subcat) => (
-                                        <button
-                                            key={subcat.name}
-                                            className="subcategory-button"
-                                            onClick={() => handleCategoryClick(subcat)}
-                                        >
-                                            {subcat.name}
-                                        </button>
-                                    ))}
+                    {activeCategories.map((category) => {
+                            // if (category.name === clickCategories) return null
+
+                            return (
+                                <div key={category.name}>
+                                    {category.subcategories && category.subcategories.length > 0 && (
+                                        <div className="subcategory-container">
+                                            {category.subcategories.map((subcat) => (
+                                                <button
+                                                    key={subcat.name}
+                                                    className="subcategory-button"
+                                                    onClick={() => {
+                                                        setClickCategories(subcat.name)
+                                                        handleCategoryClick(subcat)
+                                                    }}
+                                                >
+                                                    {subcat.name}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    ))}
+                            )
+                        }
+                    )}
                 </div>
 
                 {/* Отображаем заказы */}

@@ -1,0 +1,85 @@
+.modalContent {
+    background-color: #2d2c3c;
+    border-radius: 15px;
+    max-width: 900px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.imagePreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.imagePreview img {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 10px;
+    border: 2px solid #6a6ad8;
+}
+
+.categoryRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.addSubcategoryBtn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.addSubcategoryBtn:hover {
+    background-color: #5050d0;
+}
+
+.nestedSubcategories {
+    margin-left: 20px;
+    border-left: 2px dashed #4a4a6a;
+    padding-left: 15px;
+}
+
+
+.saveBtn {
+    background-color: #6a6ad8;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.saveBtn:hover {
+    background-color: #5050d0;
+}
+
+.cancelBtn {
+    background-color: #ff4c4c;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancelBtn:hover {
+    background-color: #d93636;
+}

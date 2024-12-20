@@ -1,7 +1,8 @@
 import styles from "./Header.module.css";
-import {logout} from "../../../store/authSlice.js";
+import {clearAuth, setAuth, setRole} from "../../../store/slice/authSlice.js";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {postLogout} from "../../../api/authApi.jsx";
 
 
 const Header = () => {
@@ -9,16 +10,16 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        dispatch(logout())
-            .unwrap()
-            .then(() => {
-                console.log("Logged out successfully");
-                navigate("/signInForm");
-            })
-            .catch((error) => {
-                console.error("Logout failed:", error);
-            });
+    const handleLogout = async () => {
+        const logout = await postLogout()
+
+        if (logout) {
+            dispatch(setRole(''));
+            dispatch(setAuth(false))
+            dispatch(clearAuth())
+            navigate("/signInForm");
+        }
+
     };
 
     return (

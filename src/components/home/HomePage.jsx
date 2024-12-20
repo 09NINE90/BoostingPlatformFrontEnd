@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import {promoList} from './HomeData';
 import Promo from './Promo.jsx';
 import './HomePage.css'
-import Navigation from "../navigation/Navigation.jsx";
 
 const HomePage = () => {
     useEffect(() => {
@@ -10,7 +9,6 @@ const HomePage = () => {
     }, []);
     return (
         <>
-            <Navigation/>
             <main>
                 <section className="promo">
                     <Promo className='promo-left'  {...promoList[0]}/>

@@ -27,3 +27,12 @@ body {
   flex-direction: column;
 }
 
+.auth-container {
+  display: none;
+}
+
+.auth-container-active {
+  display: flex;
+  width: 100%;
+}
+

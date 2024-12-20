@@ -1,23 +1,26 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../../authorization/provider/AuthProvider.js";
+import {Navigate, Outlet} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {selectAuth, selectRole} from "../../../store/slice/authSlice.js";
 
-const ProtectedRoute = ({ allowedRoles, children }) => {
-    const { authToken, currentUser } = useAuth();
+const ProtectedRoute = ({allowedRoles}) => {
 
-    if (!authToken) {
-        return <Navigate to="/signInForm" />;
+    const isAuthenticated = useSelector(selectAuth);
+    const role = useSelector(selectRole);
+
+    if (!isAuthenticated) {
+        return <Navigate to="/signInForm"/>;
     }
-    if (!currentUser?.role) {
+    if (!role) {
         console.warn("Роль пользователя не определена.");
-        return <Navigate to="/signInForm" />;
+        return <Navigate to="/signInForm"/>;
     }
 
-    if (!allowedRoles.includes(currentUser.role)) {
-        console.warn("Доступ запрещён для роли:", currentUser.role);
-        return <Navigate to="/" replace />;
+    if (role !== allowedRoles) {
+        console.warn("Доступ запрещён для роли:", role);
+        return <Navigate to="/" replace/>;
     }
 
-    return children;
+    return <Outlet/>;
 };
 
 export default ProtectedRoute;
