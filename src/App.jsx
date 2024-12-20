@@ -17,9 +17,11 @@ import ChatPage from "./components/Admin/Chat/chatPage/ChatPage.jsx";
 import ServicesPage from "./components/Admin/Service/servicePage/ServicesPage.jsx";
 
 import DashboardPage from "./components/Booster/Dashboard/DashboardPage.jsx";
+import Order from "./components/Booster/Orders/OrderPage.jsx";
+import GameTags from "./components/Booster/gameTags/GameTagsPage.jsx";
+import ProfilePage from "./components/Manager/profile/Profile.jsx";
 
 const App = () => {
-    console.log("App rendered");
     return (
         <>
             <Navigation />
@@ -44,10 +46,26 @@ const App = () => {
                     path="/Admin/gamePage"
                     element={<GamePage />}
                 />
+
                 <Route
                     exact
                     path="/Booster/dashboardPage"
                     element={<DashboardPage />}
+                />
+                <Route
+                    exact
+                    path="/Booster/orderPage"
+                    element={<Order />}
+                />
+                <Route
+                    exact
+                    path="/Booster/gameTagsPage"
+                    element={<GameTags />}
+                />
+                <Route
+                    exact
+                    path="/Manager/profile"
+                    element={<ProfilePage />}
                 />
                 <Route
                     exact

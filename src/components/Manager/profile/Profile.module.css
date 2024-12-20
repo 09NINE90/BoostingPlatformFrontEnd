@@ -1,0 +1,11 @@
+.moderatorDashboard {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: calc(100vh - 64px);
+}

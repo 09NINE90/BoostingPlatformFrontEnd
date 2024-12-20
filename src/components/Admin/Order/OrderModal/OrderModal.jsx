@@ -83,7 +83,7 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                     isOpen={isEditModalOpen}
                     title={`Edit ${editField === 'price' ? 'Price' : 'Bonus'}`}
                     content={
-                        <div className={modalStyles.editModalBody}>
+                        <div>
                             <label>
                                 {editField === 'price' ? 'Price' : 'Bonus'}:
                                 <input type="number" placeholder={`Enter new ${editField}`} />
@@ -92,7 +92,6 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                     }
                     actions={
                         <div className={modalStyles.modalActions}>
-                            <button onClick={closeEditModal}>Cancel</button>
                             <button onClick={closeEditModal}>Save</button>
                         </div>
                     }

@@ -1,0 +1,41 @@
+.gameTagsList {
+    width: 30%;
+    background-color: #1c1b29;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.gameTagsList h3 {
+    font-size: 18px;
+    text-align: center;
+    color: #ff4c4c;
+    margin-bottom: 15px;
+}
+
+.gameTagsList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gameTagsList li {
+    margin-bottom: 1.1rem;
+}
+
+.gameTag {
+    padding: 10px 20px;
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.gameTag:hover {
+    background-color: #5050d0;
+}

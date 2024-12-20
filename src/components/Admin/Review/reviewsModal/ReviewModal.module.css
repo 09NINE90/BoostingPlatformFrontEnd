@@ -1,3 +1,11 @@
+.modalActions {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 25px; /* Отступ сверху */
+    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
+}
+
 .editBtn,
 .applyBtn,
 .rejectBtn {

@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+label {
+    color: #6a6ad8;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3a3950;
+    border: none;
+    color: #fff;
+    resize: none;
+}
+
+.saveBtn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.saveBtn:hover {
+    background-color: #45a049;
+}

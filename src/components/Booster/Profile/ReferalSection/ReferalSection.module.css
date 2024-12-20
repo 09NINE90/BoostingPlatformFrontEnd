@@ -1,0 +1,35 @@
+.referralSection {
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.referralSection h4 {
+    margin-bottom: 15px;
+    color: #6a6ad8;
+    text-align: center;
+}
+
+.referralSection p {
+    color: #ccc;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.referralBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.referralBtn:hover {
+    background-color: #5050d0;
+}

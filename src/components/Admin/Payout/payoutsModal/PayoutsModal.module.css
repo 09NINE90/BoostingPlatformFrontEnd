@@ -1,29 +1,35 @@
-.applyBtn {
-    background: linear-gradient(135deg, #6a6ad8, #5050d0);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+.modalActions {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+    gap: 170px; /* Расстояние между кнопками */
+    margin-top: 25px; /* Отступ сверху */
+    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
 }
 
-.applyBtn:hover {
-    background: linear-gradient(135deg, #5050d0, #6a6ad8);
+.applyBtn,
+.rejectBtn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+.applyBtn:hover,
+.rejectBtn:hover {
     transform: scale(1.05);
+}
+
+.applyBtn {
+    background-color: #6a6ad8;
+    color: #fff;
 }
 
 .rejectBtn {
-    background: linear-gradient(135deg, #ff4c4c, #d93636);
+    background-color: #ff4c4c;
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.rejectBtn:hover {
-    background: linear-gradient(135deg, #d93636, #ff4c4c);
-    transform: scale(1.05);
 }
 
 @keyframes fadeIn {

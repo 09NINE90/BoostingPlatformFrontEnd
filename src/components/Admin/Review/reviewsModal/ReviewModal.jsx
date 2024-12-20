@@ -26,7 +26,7 @@ const ReviewModal = ({ isOpen, onClose, review, onEdit, onApply, onReject }) => 
     );
 
     const modalActions = (
-        <div>
+        <div className={styles.modalActions}>
             <button className={styles.editBtn} onClick={onEdit}>
                 Edit
             </button>

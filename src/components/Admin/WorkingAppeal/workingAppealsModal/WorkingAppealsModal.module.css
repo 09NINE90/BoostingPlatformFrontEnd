@@ -6,9 +6,10 @@
 
 .modalActions {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
-    justify-content: center;
+    justify-content: center; /* Центрируем кнопки */
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 25px; /* Отступ сверху */
+    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
 }
 
 .approveBtn,

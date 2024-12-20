@@ -1,8 +1,16 @@
+.modalActions {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 25px; /* Отступ сверху */
+    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
+}
+
+/* Общие стили кнопок */
 .banBtn,
 .fineBtn,
 .applyBtn {
     padding: 10px 20px;
-    margin-left: 1rem;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
@@ -14,7 +22,6 @@
 .banBtn {
     background-color: #ff4c4c;
     color: #fff;
-
 }
 
 .banBtn:hover {
@@ -37,4 +44,37 @@
 
 .applyBtn:hover {
     background-color: #5050d0;
+}
+
+/* MiniModal стили */
+.miniModalContent textarea,
+.miniModalContent input {
+    padding: 12px;
+    background-color: #1c1b29;
+    border: 1px solid #3a3950;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    width: 93%;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.miniModalContent .applyBtnMini {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a6ad8;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.miniModalContent .applyBtn:hover {
+    background-color: #5050d0;
+    transform: scale(1.05);
 }

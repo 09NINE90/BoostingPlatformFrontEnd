@@ -17,7 +17,7 @@ const PayoutModal = ({ isOpen, payout, onClose }) => {
                 </div>
             }
             actions={
-                <div>
+                <div className={styles.modalActions}>
                     <button className={styles.applyBtn}>Apply</button>
                     <button className={styles.rejectBtn} onClick={onClose}>
                         Reject
@@ -26,7 +26,6 @@ const PayoutModal = ({ isOpen, payout, onClose }) => {
             }
             onClose={onClose}
         />
-
     );
 };
 

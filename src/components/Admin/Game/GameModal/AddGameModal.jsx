@@ -96,7 +96,7 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
             isOpen={isOpen}
             title="Добавить игру"
             content={
-                <div>
+                <div className={modalStyles.modalBody}>
                     <label htmlFor="gameImage">Изображение игры:</label>
                     <input
                         type="file"
@@ -143,9 +143,6 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
                 <div>
                     <button className={modalStyles.saveBtn} onClick={saveGame}>
                         Сохранить
-                    </button>
-                    <button className={modalStyles.cancelBtn} onClick={onClose}>
-                        Закрыть
                     </button>
                 </div>
             }

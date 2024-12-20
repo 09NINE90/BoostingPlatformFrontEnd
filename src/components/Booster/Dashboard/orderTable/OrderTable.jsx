@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ConfirmationModal from "./ConfirmationModal";
+import ConfirmationModal from "../confirmationModal/ConfirmationModal.jsx";
 import styles from "./OrderTable.module.css";
 
 const OrderTable = () => {
@@ -24,7 +24,6 @@ const OrderTable = () => {
 
     return (
         <section className={styles.orderSection}>
-            <h2>Available Orders</h2>
             <div className={styles.orderTable}>
                 <div className={styles.orderHeader}>
                     <div>Available Orders</div>

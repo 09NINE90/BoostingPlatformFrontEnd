@@ -1,0 +1,52 @@
+/* Стили для контента модального окна */
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрирование по вертикали */
+    text-align: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+/* Заголовок */
+.modalTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ff4c4c;
+    text-shadow: 0 0 10px rgba(255, 76, 76, 0.8);
+}
+
+/* Текст */
+.modalText {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Контейнер для кнопок */
+.actionsContainer {
+    display: flex;
+    justify-content: center; /* Центрируем кнопку по горизонтали */
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Кнопка подтверждения */
+.confirmBtn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.confirmBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}

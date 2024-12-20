@@ -10,19 +10,6 @@
     transition: all 0.3s ease;
 }
 
-.deleteBtn {
-    background-color: #ff4c4c;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.deleteBtn:hover {
-    background-color: #d93636;
-}
-
-
 .applyBtn {
     background-color: #6a6ad8;
     padding: 12px 25px;

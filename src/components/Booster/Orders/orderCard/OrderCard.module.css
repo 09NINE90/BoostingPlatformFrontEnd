@@ -1,0 +1,57 @@
+.card {
+    background-color: #2d2c3c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.price {
+    color: #ff4c4c;
+}
+
+.details p {
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.in-progress {
+    color: #4caf50;
+}
+
+.done {
+    color: #6ad86a;
+}
+
+.not-started {
+    color: #ff4c4c;
+}
+
+.action {
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.action:hover {
+    background-color: #5050d0;
+}

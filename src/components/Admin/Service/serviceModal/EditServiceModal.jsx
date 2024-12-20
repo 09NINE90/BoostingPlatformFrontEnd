@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalTemplate from "../../../ModalTemplate/ModalTemplate.jsx";
-import styles from "./EditServiceModal.module.css";
+import styles from "./AddServiceModal.module.css";
 
 const EditServiceModal = ({ isOpen, onClose, onSave, service, games }) => {
     const [image, setImage] = useState(service.image);
@@ -154,9 +154,6 @@ const EditServiceModal = ({ isOpen, onClose, onSave, service, games }) => {
             }
             actions={
                 <div>
-                    <button className={styles.cancelBtn} onClick={onClose}>
-                        Закрыть
-                    </button>
                     <button className={styles.saveBtn} onClick={handleSave}>
                         Сохранить
                     </button>

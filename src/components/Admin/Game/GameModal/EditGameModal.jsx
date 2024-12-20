@@ -77,18 +77,13 @@ const EditGameModal = ({ isOpen, onClose, gameData, onSave }) => {
                 </div>
             }
             actions={
-                <div className={modalStyles.modalActions}>
+                <div>
                     <button className={modalStyles.saveBtn} onClick={saveGame}>
                         Сохранить
-                    </button>
-                    <button className={modalStyles.cancelBtn} onClick={onClose}>
-                        Закрыть
                     </button>
                 </div>
             }
             onClose={onClose}
-            modalClassName={`${modalStyles.modal} ${isOpen ? modalStyles.show : ""}`}
-            modalContentClassName={modalStyles.modalContent}
         />
     );
 };

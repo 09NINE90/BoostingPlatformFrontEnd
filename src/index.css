@@ -20,7 +20,8 @@ html, body {
   background-color: #1c1b29;
   color: #fff;
   line-height: 1.6;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {

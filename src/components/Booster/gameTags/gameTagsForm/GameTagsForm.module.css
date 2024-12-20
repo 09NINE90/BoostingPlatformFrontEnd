@@ -1,0 +1,87 @@
+.gameTagsForm {
+    width: 70%;
+}
+
+.checkboxGroup {
+    display: flex;
+    gap: 20px;
+}
+
+.customCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    position: relative;
+}
+
+.customCheckbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.customCheckbox span {
+    position: relative;
+    padding-left: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.customCheckbox span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #6a6ad8;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.customCheckbox input[type="checkbox"]:checked + span::before {
+    background-color: #6a6ad8;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inlineLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inlineLabel input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #3a3950;
+    color: #fff;
+    border: none;
+}
+
+.statusGroup {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.submitBtn {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: #45a049;
+}

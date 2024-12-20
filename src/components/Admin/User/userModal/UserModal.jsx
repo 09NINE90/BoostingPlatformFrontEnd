@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalTemplate from "../../../ModalTemplate/ModalTemplate.jsx";
 import styles from "./UserModal.module.css";
 
-const UserModal = ({ isOpen, onClose, user, onOpenMiniModal }) => {
-    const modalContent = (
+const UserModal = ({ isOpen, onClose, user }) => {
+    const [miniModalType, setMiniModalType] = useState(null); // Тип мини-модала: ban или fine
+
+    const openMiniModal = (type) => {
+        setMiniModalType(type);
+    };
+
+    const closeMiniModal = () => {
+        setMiniModalType(null);
+    };
+
+    const mainModalContent = (
         <div>
             <label>Nickname:</label>
             <input type="text" defaultValue={user.nickname} />
@@ -30,32 +40,61 @@ const UserModal = ({ isOpen, onClose, user, onOpenMiniModal }) => {
         </div>
     );
 
-    const modalActions = (
-        <div>
-            <button
-                className={styles.banBtn}
-                onClick={() => onOpenMiniModal("ban")}
-            >
+    const mainModalActions = (
+        <div className={styles.modalActions}>
+            <button className={styles.banBtn} onClick={() => openMiniModal("ban")}>
                 Ban
             </button>
-            <button
-                className={styles.fineBtn}
-                onClick={() => onOpenMiniModal("fine")}
-            >
+            <button className={styles.fineBtn} onClick={() => openMiniModal("fine")}>
                 Fine
             </button>
             <button className={styles.applyBtn}>Apply</button>
         </div>
     );
 
+    // Содержимое мини-модала
+    const miniModalContent =
+        miniModalType === "ban" ? (
+            <textarea placeholder="Reason for ban" className={styles.textarea}></textarea>
+        ) : (
+            <>
+                <input
+                    type="number"
+                    placeholder="Fine Amount"
+                    className={styles.input}
+                />
+                <textarea placeholder="Reason for fine" className={styles.textarea}></textarea>
+            </>
+        );
+
+    const miniModalActions = (
+        <div>
+            <button className={styles.applyBtn}>Confirm</button>
+        </div>
+    );
+
     return (
-        <ModalTemplate
-            isOpen={isOpen}
-            title="User Settings"
-            content={modalContent}
-            actions={modalActions}
-            onClose={onClose}
-        />
+        <>
+            {/* Основной модал */}
+            <ModalTemplate
+                isOpen={isOpen}
+                title="User Settings"
+                content={mainModalContent}
+                actions={mainModalActions}
+                onClose={onClose}
+            />
+
+            {/* Встроенный мини-модал */}
+            {miniModalType && (
+                <ModalTemplate
+                    isOpen={!!miniModalType}
+                    title={miniModalType === "ban" ? "Ban User" : "Fine User"}
+                    content={miniModalContent}
+                    actions={miniModalActions}
+                    onClose={closeMiniModal}
+                />
+            )}
+        </>
     );
 };
 

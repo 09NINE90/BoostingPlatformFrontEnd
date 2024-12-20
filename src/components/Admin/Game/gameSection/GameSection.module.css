@@ -38,12 +38,12 @@
     background-color: #5050d0;
 }
 
-.filterContainer button.addNewGame {
+.addNewGame {
     background: linear-gradient(90deg, #5050d0, #6a6ad8);
     box-shadow: 0 4px 15px rgba(106, 106, 216, 0.6);
 }
 
-.filterContainer button.addNewGame:hover {
+.addNewGame:hover {
     background: linear-gradient(90deg, #6a6ad8, #5050d0);
     box-shadow: 0 6px 20px rgba(106, 106, 216, 0.8);
 }

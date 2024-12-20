@@ -1,0 +1,47 @@
+.statusSection {
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.sliderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.sliderLabels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    color: #fff;
+}
+
+.sliderLabels .left {
+    color: #4caf50;
+}
+
+.sliderLabels .middle {
+    color: #9d9dff;
+}
+
+.sliderLabels .right {
+    color: #ddd;
+}
+
+.progressBar {
+    width: 100%;
+    height: 10px;
+    background-color: #3a3950;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, #4caf50, #9d9dff, #ddd);
+    border-radius: 5px;
+}

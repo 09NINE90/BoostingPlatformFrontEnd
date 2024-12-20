@@ -1,0 +1,236 @@
+.modalBody {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    height: 900px;
+    width: 1500px;
+    overflow-y: auto;
+
+}
+
+.orderInfo {
+    flex: 1;
+    background-color: #1c1b29;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.orderInfo h3 {
+    text-align: center;
+    color: #6a6ad8;
+    margin-bottom: 15px;
+}
+.orderInfo p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.orderInfo .status {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* Кнопки внизу секции Order Information */
+
+.orderActions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.startSessionBtn,
+.finishSessionBtn,
+.finishOrderBtn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.startSessionBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+}
+
+.startSessionBtn:hover {
+    background-color: #5050d0;
+    transform: scale(1.05);
+}
+
+.finishSessionBtn {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+.finishSessionBtn:hover {
+    background-color: #e69500;
+    transform: scale(1.05);
+}
+
+.finishOrderBtn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.finishOrderBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.finishOrderBtn:disabled,
+.startSessionBtn:disabled,
+.finishSessionBtn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+.confirmActions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirmBtn {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cancelBtn {
+    background-color: #ff4c4c;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.confirmBtn:hover {
+    background-color: #45a049;
+}
+
+.cancelBtn:hover {
+    background-color: #d93636;
+}
+
+.sessionModalContent,
+.finishModalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.applyBtn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.applyBtn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+
+.chatBox {
+    flex: 1.5;
+    background-color: #1c1b29;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.chatBox h3 {
+    text-align: center;
+    color: #6a6ad8;
+    margin-bottom: 15px;
+}
+
+.chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #232234;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.message {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.time {
+    font-size: 12px;
+    color: #999;
+}
+
+.chatInput {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.chatInput input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #232234;
+    color: #fff;
+}
+
+.chatInput button {
+    padding: 10px;
+    background-color: #6a6ad8;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chatInput button:hover {
+    background-color: #5050d0;
+}
+
+/* Правая колонка: Дополнительная информация */
+.additionalInfo {
+    flex: 1;
+    background-color: #1c1b29;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.additionalInfo h3 {
+    text-align: center;
+    color: #6a6ad8;
+    margin-bottom: 15px;
+}
+
+.additionalInfo p {
+    margin: 10px 0;
+    font-size: 14px;
+}

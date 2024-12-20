@@ -266,9 +266,6 @@ const AddServiceModal = ({ isOpen, onClose, onSave }) => {
             }
             actions={
                 <div>
-                    <button className={styles.cancelBtn} onClick={onClose}>
-                        Закрыть
-                    </button>
                     <button className={styles.saveBtn} onClick={handleSave}>
                         Сохранить
                     </button>

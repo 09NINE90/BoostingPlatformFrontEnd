@@ -21,7 +21,6 @@ const ModalTemplate = ({
                     <button className={styles.modalClose} onClick={onClose}>
                         &times;
                     </button>
-                    {title && <h2 className={styles.modalTitle}>{title}</h2>}
                     <div className={styles.modalBody}>{content}</div>
                     <div className={styles.modalActions}>{actions}</div>
                 </div>

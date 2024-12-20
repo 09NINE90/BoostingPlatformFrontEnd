@@ -7,12 +7,12 @@ const Header = () => {
             <div className={styles.logo}>Dead PackMan</div>
             <nav>
                 <ul className={styles.navLinks}>
-                    <li><a href="/booster/dashboard.html" className={styles.active}>Dashboard</a></li>
-                    <li><a href="/booster/booster-orders.html">My Orders</a></li>
-                    <li><a href="/booster/my-game-tags.html">My Game Tags</a></li>
+                    <li><a href="/dashboard" className={styles.link}>Dashboard</a></li>
+                    <li><a href="/orders" className={`${styles.link} ${styles.active}`}>My Orders</a></li>
+                    <li><a href="/tags" className={styles.link}>My Game Tags</a></li>
                 </ul>
             </nav>
-            <a href="/booster/profile.html" className={styles.profileBtn}>My Profile</a>
+            <a href="/profile" className={styles.profileBtn}>My Account</a>
         </header>
     );
 };

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import UserItem from "../userItem/UserItem.jsx";
 import UserModal from "../userModal/UserModal.jsx";
-import MiniModal from "../userModal/MiniModal.jsx";
 import styles from "./UserSection.module.css";
 
 const UsersSection = () => {
@@ -9,7 +8,7 @@ const UsersSection = () => {
         {
             id: 1,
             nickname: "JohnDoe",
-            role: "Customer",
+            role: "customer",
             registrationDate: "2023-11-25",
             amountOrders: 15,
             spentMoney: 1200,
@@ -17,7 +16,7 @@ const UsersSection = () => {
         {
             id: 2,
             nickname: "JaneSmith",
-            role: "Booster",
+            role: "booster",
             registrationDate: "2023-10-12",
             amountOrders: 20,
             spentMoney: 900,
@@ -26,7 +25,10 @@ const UsersSection = () => {
 
     const [selectedUser, setSelectedUser] = useState(null);
     const [isUserModalOpen, setIsUserModalOpen] = useState(false);
-    const [miniModalType, setMiniModalType] = useState(null);
+
+    // Второй UserModal
+    const [secondModalUser, setSecondModalUser] = useState(null);
+    const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
     const openUserModal = (user) => {
         setSelectedUser(user);
@@ -38,12 +40,14 @@ const UsersSection = () => {
         setSelectedUser(null);
     };
 
-    const openMiniModal = (type) => {
-        setMiniModalType(type);
-    };
+    // const openSecondModal = (user) => {
+    //     setSecondModalUser(user);
+    //     setIsSecondModalOpen(true);
+    // };
 
-    const closeMiniModal = () => {
-        setMiniModalType(null);
+    const closeSecondModal = () => {
+        setIsSecondModalOpen(false);
+        setSecondModalUser(null);
     };
 
     return (
@@ -58,7 +62,7 @@ const UsersSection = () => {
                     <option value="manager">Manager</option>
                     <option value="admin">Admin</option>
                 </select>
-                <button>Apply</button>
+                <button className={styles.applyBtn}>Apply</button>
             </div>
 
             <div className={styles.usersList}>
@@ -71,20 +75,21 @@ const UsersSection = () => {
                 ))}
             </div>
 
+            {/* Основной UserModal */}
             {isUserModalOpen && selectedUser && (
                 <UserModal
                     isOpen={isUserModalOpen}
                     user={selectedUser}
                     onClose={closeUserModal}
-                    onOpenMiniModal={openMiniModal}
                 />
             )}
 
-            {miniModalType && (
-                <MiniModal
-                    type={miniModalType}
-                    isOpen={!!miniModalType}
-                    onClose={closeMiniModal}
+            {/* Второй UserModal */}
+            {isSecondModalOpen && secondModalUser && (
+                <UserModal
+                    isOpen={isSecondModalOpen}
+                    user={secondModalUser}
+                    onClose={closeSecondModal}
                 />
             )}
         </section>

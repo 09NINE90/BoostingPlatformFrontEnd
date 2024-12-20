@@ -15,7 +15,7 @@ const AppealModal = ({ isOpen, onClose, appeal }) => {
     );
 
     const modalActions = (
-        <div>
+        <div className={styles.modalActions}>
             <button className={styles.approveBtn}>Approve</button>
             <button className={styles.denyBtn}>Deny</button>
         </div>

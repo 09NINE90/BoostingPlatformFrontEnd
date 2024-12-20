@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header.jsx";
-import OrderTable from "./OrderTable.jsx";
+import OrderTable from "./orderTable/OrderTable.jsx";
 
 const DashboardPage = () => {
     return (

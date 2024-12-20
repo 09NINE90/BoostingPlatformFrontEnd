@@ -8,16 +8,28 @@ export const LinksData = [
         name: "Services"
     },
     {
-        path: "/loginForm",
-        name: "LoginForm"
-    },
-    {
         path: "/Admin/gamePage",
         name: "GamePage"
     },
     {
-        path: "/Booster/dashboardPage",
-        name: "DashboardPage"
+        path: "/Booster/DashboardPage",
+        name: "Dashboard"
+    },
+    {
+        path: "/Booster/OrderPage",
+        name: "My Orders"
+    },
+    {
+        path: "/Booster/GameTagsPage",
+        name: "My Game Tags"
+    },
+    {
+        path: "/Booster/profilePage",
+        name: "Profile"
+    },
+    {
+        path: "/Manager/profile",
+        name: "Profile"
     }
 ];
 

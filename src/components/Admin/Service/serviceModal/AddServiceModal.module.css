@@ -56,30 +56,28 @@
 }
 
 
-.saveBtn {
-    background-color: #6a6ad8;
-    padding: 12px 25px;
+.saveBtn,
+.cancelBtn {
+    padding: 10px 20px;
     border-radius: 8px;
-    color: #fff;
-    border: none;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
 }
 
-.saveBtn:hover {
-    background-color: #5050d0;
+.saveBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+}
+
+.cancelBtn:hover {
+    background-color: #ff5454;
 }
 
 .cancelBtn {
     background-color: #ff4c4c;
-    padding: 12px 25px;
-    border-radius: 8px;
     color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.cancelBtn:hover {
-    background-color: #d93636;
-}

@@ -1,0 +1,19 @@
+.ordersSection {
+    padding: 20px;
+    background-color: #1c1b29;
+    min-height: 100vh;
+}
+
+.title {
+    text-align: center;
+    color: #ff4c4c;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}

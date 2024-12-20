@@ -1,0 +1,62 @@
+.profileSection {
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profilePicture img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #6a6ad8;
+}
+
+.profileInfo h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.profileInfo p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.profileInfo span {
+    color: #6a6ad8;
+    font-weight: bold;
+}
+
+.settingsBtn {
+    margin-left: auto;
+    font-size: 20px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.settingsBtn:hover {
+    color: #6a6ad8;
+}
+
+.aboutMe textarea {
+    width: 100%;
+    height: 100px;
+    background-color: #3a3950;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    resize: none;
+    padding: 10px;
+}

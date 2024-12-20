@@ -1,23 +1,19 @@
-/* Левая панель - Order Information */
-.orderInfo {
-    background-color: #3a3950;
-    padding: 20px;
-    border-radius: 10px;
+.modalBody{
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    max-width: 70vw;
+    max-height: 80vh;
 }
 
-.orderInfo h3 {
-    color: #6a6ad8;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.actionButtons {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+.orderInfo,
+.chatBox,
+.additionalInfo{
+    background-color: #1c1b29;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    overflow-y: auto;
+    width: 400px;
+    height: 760px;
 }
 
 .setupBtn,
@@ -57,6 +53,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 800px;
+    height: 750px;
 }
 
 .chatMessages {
@@ -71,6 +69,7 @@
     margin-bottom: 10px;
     color: #fff;
 }
+
 
 .message p {
     margin: 0;
@@ -110,15 +109,6 @@
     background-color: #5050d0;
 }
 
-/* Правая панель - Additional Information */
-.additionalInfo {
-    background-color: #3a3950;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 .additionalInfo h3 {
     color: #6a6ad8;
@@ -126,61 +116,6 @@
     margin-bottom: 10px;
 }
 
-
-/* Модальное окно изменения цены и бонуса*/
-.modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1100; /* Выше основного модального окна */
-}
-
-.editModal {
-    background-color: #3a3950;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.9);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 1101;
-}
-
-.editModal input,
-.editModal textarea {
-    width: 94%; /* Установлено 100% для удобного заполнения */
-    padding: 12px;
-    border: 1px solid #3a3950;
-    border-radius: 8px;
-    background-color: #1c1b29;
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 15px;
-    resize: none; /* Убрано изменение размера */
-}
-
-
-
-.editModalBody {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.modalActions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
 
 .gearButton {
     background: none;
@@ -195,6 +130,8 @@
 .gearButton:hover {
     color: #5050d0;
 }
+
+
 
 .modalActions button {
     padding: 10px 20px;

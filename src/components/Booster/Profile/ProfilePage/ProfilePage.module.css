@@ -1,0 +1,80 @@
+/* Общий контейнер для всей страницы профиля */
+.accountPage {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две равные колонки */
+    grid-template-rows: auto auto auto; /* Три строки */
+    grid-gap: 20px; /* Отступы между секциями */
+    padding: 40px 20px; /* Внешние отступы */
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #1c1b29;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Распределение для каждой секции */
+.accountPage > :nth-child(1) {
+    grid-column: span 2; /* Профиль занимает две колонки */
+}
+
+.accountPage > :nth-child(2),
+.accountPage > :nth-child(3) {
+    grid-column: span 1; /* Статус и баланс - по одной колонке */
+}
+
+.accountPage > :nth-child(4),
+.accountPage > :nth-child(5) {
+    grid-column: span 2; /* История и рефералы занимают две колонки */
+}
+
+/* Общий заголовок для секций */
+.sectionTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6a6ad8;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Универсальный стиль для всех контейнеров секций */
+.sectionContainer {
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Кнопки в секциях */
+.button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #6a6ad8;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #5050d0;
+    transform: scale(1.05);
+}
+
+/* Настройка шрифта и текста */
+.textCenter {
+    text-align: center;
+    color: #ccc;
+}
+
+/* Дополнительный отступ для модального окна */
+.modalSpacing {
+    margin-top: 20px;
+}
