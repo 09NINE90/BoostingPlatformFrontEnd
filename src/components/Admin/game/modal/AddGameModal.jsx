@@ -1,10 +1,9 @@
-import { useState } from "react";
-import ModalTemplate from "../../../utils/modalTemplate/ModalTemplate.jsx";
 import modalStyles from "./GameModal.module.css";
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import {useState} from "react";
+import ModalTemplate from "../../../utils/modalTemplate/ModalTemplate.jsx";
+import {addGameApi} from "../../../../api/gamesApi.jsx";
 
-const AddGameModal = ({ isOpen, onClose, onSave }) => {
+const AddGameModal = ({isOpen, onClose, onSave}) => {
     const [gameImage, setGameImage] = useState(null); // Состояние для изображения
     const [previewImage, setPreviewImage] = useState(""); // Для предпросмотра изображения
     const [gameTitle, setGameTitle] = useState("");
@@ -56,14 +55,10 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
         };
 
         try {
-            const response = await axios.post(`${baseUrl}/games/addNewGame`, gameData, {withCredentials: true});
-            console.log(response);
+            const response = await addGameApi(gameData);
         } catch (err) {
             console.error('Ошибка при получении заказов:', err);
         }
-
-        // Вывод JSON в консоль
-        // console.log("Сохранённые данные игры:", JSON.stringify(gameData, null, 2));
 
         onSave(gameData);
         onClose();
@@ -117,7 +112,7 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
                     />
                     {previewImage && (
                         <div>
-                            <img src={previewImage} alt="Preview" />
+                            <img src={previewImage} alt="Preview"/>
                         </div>
                     )}
 

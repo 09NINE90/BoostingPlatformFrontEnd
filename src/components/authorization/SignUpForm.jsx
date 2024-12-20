@@ -1,9 +1,10 @@
+import "./AuthForms.css";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { register, selectAuthError, selectAuthStatus } from "../../store/authSlice"; // Предполагается, что у вас есть register action
+import { useSelector } from "react-redux";
+import { selectAuthStatus } from "../../store/slice/authSlice.js";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./AuthForms.css"; // Подключаем нужные стили
-import InputGroup from "./InputGroup.jsx"; // Повторно используем ваш InputGroup компонент
+import InputGroup from "./InputGroup.jsx";
+import {postRegister} from "../../api/authApi.jsx";
 
 const SignUpForm = () => {
     useEffect(() => {
@@ -14,13 +15,11 @@ const SignUpForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const error = useSelector(selectAuthError);
     const status = useSelector(selectAuthStatus);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
@@ -28,10 +27,18 @@ const SignUpForm = () => {
             return;
         }
 
-        dispatch(register({ nickname, username, password }))
-            .unwrap()
-            .then(() => navigate("/signInForm")) // Переход на страницу после успешной регистрации
-            .catch(() => {});
+        const credentials = {
+            nickname: nickname,
+            username: username,
+            password: password,
+        }
+
+        const register = await postRegister(credentials);
+
+        if (register) {
+            navigate("/signInForm")
+        }
+
     };
 
     return (

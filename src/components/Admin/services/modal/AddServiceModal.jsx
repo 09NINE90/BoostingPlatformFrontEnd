@@ -1,8 +1,7 @@
+import styles from "./AddServiceModal.module.css";
 import { useState, useEffect } from "react";
 import ModalTemplate from "../../../../components/utils/modalTemplate/ModalTemplate.jsx";
-import styles from "./AddServiceModal.module.css";
-import axios from "axios";
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import {getGameByIdApi} from "../../../../api/gamesApi.jsx";
 
 const AddServiceModal = ({ isOpen, onClose, onSave, games }) => {
     const [image, setImage] = useState("");
@@ -16,8 +15,7 @@ const AddServiceModal = ({ isOpen, onClose, onSave, games }) => {
     // Загрузка данных игры (категорий)
     const loadGameData = async (gameId) => {
         try {
-            const response = await fetch(`${baseUrl}/games/${gameId}`);
-            const gameData = await response.json();
+            const gameData = await getGameByIdApi(gameId);
             setCategories(gameData.categories || []);
         } catch (error) {
             console.error("Ошибка загрузки данных игры:", error);

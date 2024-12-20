@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import ModalTemplate from "src/components/utils/modalTemplate/ModalTemplate.jsx";
 import modalStyles from "./GameModal.module.css";
 
-const EditGameModal = ({ isOpen, onClose, gameData, onSave }) => {
+const EditGameModal = ({isOpen, onClose, gameData, onSave}) => {
     const [gameTitle, setGameTitle] = useState("");
     const [gameDescription, setGameDescription] = useState("");
     const [categories, setCategories] = useState([]);
@@ -26,7 +26,7 @@ const EditGameModal = ({ isOpen, onClose, gameData, onSave }) => {
             return;
         }
 
-        const updatedGame = { ...gameData, title: gameTitle, description: gameDescription, categories };
+        const updatedGame = {...gameData, title: gameTitle, description: gameDescription, categories};
         onSave(updatedGame);
         onClose();
     };

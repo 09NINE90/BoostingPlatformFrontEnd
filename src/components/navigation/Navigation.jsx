@@ -3,9 +3,9 @@ import {NavLink, useNavigate } from 'react-router-dom';
 import './Navigation.css';
 import './DropdownMenu.css';
 import {useSelector, useDispatch} from "react-redux";
-import {logout, selectAuth} from "/src/store/authSlice.js";
-import axios from 'axios'
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import {clearAuth, selectAuth, setAuth, setRole} from "/src/store/slice/authSlice.js";
+import {postLogout} from "../../api/authApi.jsx";
+import {getAllGamesApi} from "../../api/gamesApi.jsx";
 
 const Navigation = () => {
 
@@ -16,16 +16,15 @@ const Navigation = () => {
     const [games, setGames] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const handleLogout = () => {
-        dispatch(logout())
-            .unwrap()
-            .then(() => {
-                console.log("Logged out successfully");
-                navigate("/signInForm");
-            })
-            .catch((error) => {
-                console.error("Logout failed:", error);
-            });
+    const handleLogout = async () => {
+        const logout = await postLogout()
+
+        if (logout) {
+            dispatch(setRole(''));
+            dispatch(setAuth(false))
+            dispatch(clearAuth())
+            navigate("/signInForm");
+        }
     };
 
     const guestLinks = [
@@ -41,8 +40,8 @@ const Navigation = () => {
 
     const fetchGames = async () => {
         try {
-            const response = await axios.get(`${baseUrl}/games/getAllGames`, { withCredentials: true });
-            setGames(response.data); // Ожидается, что сервер возвращает массив игр
+            const response = await getAllGamesApi();
+            setGames(response); // Ожидается, что сервер возвращает массив игр
         } catch (error) {
             console.error('Failed to fetch games:', error);
         }

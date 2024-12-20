@@ -15,7 +15,7 @@ const GameCard = ({ id, image, title, description, categories, onEditClick }) =>
 );
 
 GameCard.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
