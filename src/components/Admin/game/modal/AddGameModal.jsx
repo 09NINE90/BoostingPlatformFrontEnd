@@ -28,18 +28,6 @@ const AddGameModal = ({isOpen, onClose, onSave}) => {
         setCategories([...categories]);
     };
 
-    // Обработчик выбора изображения
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setGameImage(file);
-
-            // Предпросмотр изображения
-            const reader = new FileReader();
-            reader.onloadend = () => setPreviewImage(reader.result);
-            reader.readAsDataURL(file);
-        }
-    };
 
     const saveGame = async () => {
         if (!gameImage || !gameTitle || !gameDescription) {
@@ -47,20 +35,21 @@ const AddGameModal = ({isOpen, onClose, onSave}) => {
             return;
         }
 
-        const gameData = {
-            // image: previewImage, // Сохраняем предпросмотр в виде Base64
+        const formData = new FormData();
+        formData.append("file", document.querySelector('input[type="file"]').files[0]); // Исходный файл
+
+        const game = {
             title: gameTitle,
             description: gameDescription,
-            categories: categories
-        };
-
-        try {
-            const response = await addGameApi(gameData);
-        } catch (err) {
-            console.error('Ошибка при получении заказов:', err);
+            categories: categories,
         }
 
-        onSave(gameData);
+        formData.append(
+            'game',
+            new Blob([JSON.stringify(game)], { type: "application/json" }),
+            )
+
+        onSave(formData);
         onClose();
     };
 
@@ -107,7 +96,7 @@ const AddGameModal = ({isOpen, onClose, onSave}) => {
                         type="file"
                         id="gameImage"
                         accept="image/*"
-                        onChange={handleImageChange}
+                        onChange={(e) => setGameImage(URL.createObjectURL(e.target.files[0]))}
                         required
                     />
                     {previewImage && (
