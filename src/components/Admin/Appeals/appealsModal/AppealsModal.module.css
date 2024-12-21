@@ -1,30 +1,55 @@
+.modalBody {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 70vw; /* Ширина остается фиксированной */
+    max-height: 100%; /* Максимальная высота модального окна */
+    height: 68vh;
+    padding: 20px;
+    background-color: #1d1d2b;
+    border-radius: 12px;
+    box-shadow: 1px 8px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden; /* Скрываем общий скролл */
+    box-sizing: border-box;
+}
+
+.appealDetails {
+    flex: 0 0 30%; /* Фиксированная ширина блока информации */
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: calc(90vh - 40px); /* Учитываем отступы модального окна */
+    overflow-y: auto; /* Если текст слишком длинный */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 .appealDetails p {
     margin: 0;
     font-size: 16px;
-    color: #fff;
 }
 
 .appealDetails p strong {
     color: #9d9dff;
 }
-.modalBody{
-    width: 800px;
-    height: 800px;
-}
 
+/* Чат */
 .chatSection {
+    flex: 1; /* Растягивается на доступное пространство */
+    display: flex;
+    flex-direction: column;
     background-color: #3a3950;
     border-radius: 10px;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 685px;
+    max-height: calc(90vh - 40px); /* Высота с учетом отступов модального окна */
 }
 
 .chatMessages {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* Прокрутка для сообщений */
     background-color: #2d2c3c;
     border-radius: 5px;
     padding: 10px;
@@ -32,6 +57,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
 
 .message {
     padding: 10px;
@@ -53,6 +79,7 @@
 .chatInput {
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .chatInput input {
@@ -76,29 +103,3 @@
 .chatInput button:hover {
     background-color: #5050d0;
 }
-
-.appealActions {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.actionBtn {
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.acceptBtn {
-    background-color: #4caf50;
-    color: #fff;
-}
-
-.acceptBtn:hover {
-    background-color: #45a049;
-}
-

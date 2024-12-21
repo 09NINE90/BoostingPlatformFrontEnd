@@ -15,6 +15,16 @@ const AppealsSection = () => {
             chat: [
                 { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
                 { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
+                { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
+                { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
+                { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
+                { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
+                { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
+                { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
+                { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
+                { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
+                { sender: "Customer", text: "Booster is inactive.", timestamp: "10:01 AM" },
+                { sender: "Moderator", text: "Please provide details.", timestamp: "10:05 AM" },
             ],
         },
         {

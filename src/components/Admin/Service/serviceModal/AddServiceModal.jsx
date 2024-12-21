@@ -162,8 +162,7 @@ const AddServiceModal = ({ isOpen, onClose, onSave }) => {
             isOpen={isOpen}
             title="Добавить новую услугу"
             content={
-                <div>
-                    {/* Загрузка изображения */}
+                <div className={styles.modalContent}>
                     <label>Добавьте изображение:</label>
                     <input
                         type="file"

@@ -21,6 +21,12 @@
     transition: all 0.3s ease;
 }
 
+.filterContainer input:focus {
+    outline: none;
+    border-color: #6a6ad8;
+    box-shadow: 0 0 8px rgba(106, 106, 216, 0.6);
+}
+
 .filterContainer button {
     padding: 12px 20px;
     border: none;

@@ -1,19 +1,32 @@
-.modalBody{
-    width: 700px;
+.modalContent {
+    width: 50vw;
+    max-height: 70vh; /* Ограничение по высоте */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    padding: 20px;
+    background-color: #1d1d2b;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    color: #fff;
 }
 
-.saveBtn {
-    background-color: #6a6ad8;
-    padding: 12px 25px;
-    border-radius: 8px;
+
+.saveBtn{
     color: #fff;
-    border: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #5050d0, #6a6ad8);
+    box-shadow: 0 4px 15px rgba(106, 106, 216, 0.6);
 }
 
 .saveBtn:hover {
-    background-color: #5050d0;
+    background: linear-gradient(90deg, #6a6ad8, #5050d0);
+    box-shadow: 0 6px 20px rgba(106, 106, 216, 0.8);
 }
 
 .categoryRow {
@@ -21,6 +34,7 @@
     align-items: center;
     gap: 10px;
 }
+
 
 .addSubcategoryBtn,
 .deleteCategoryBtn {
@@ -61,7 +75,8 @@
     padding: 10px;
 }
 .addCategoryBtn {
-    background-color: #6a6ad8;
+    background: linear-gradient(90deg, #5050d0, #6a6ad8);
+    box-shadow: 0 4px 15px rgba(106, 106, 216, 0.6);
     padding: 12px 25px;
     border-radius: 8px;
     color: #fff;
@@ -72,5 +87,6 @@
 }
 
 .addCategoryBtn:hover {
-    background-color: #5050d0;
+    background: linear-gradient(90deg, #6a6ad8, #5050d0);
+    box-shadow: 0 6px 20px rgba(106, 106, 216, 0.8);
 }

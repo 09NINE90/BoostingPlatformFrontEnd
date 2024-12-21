@@ -21,29 +21,58 @@
 }
 .filterContainer {
     display: flex;
-    justify-content: space-between;
+    gap: 15px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .filterContainer input {
-    width: 70%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    width: 40%;
+    border: 1px solid #3a3950;
     border-radius: 5px;
-    font-size: 14px;
+    background-color: #2d2c3c;
+    color: #fff;
+    transition: all 0.3s ease;
 }
+
+.filterContainer input:focus {
+    outline: none;
+    border-color: #6a6ad8;
+    box-shadow: 0 0 8px rgba(106, 106, 216, 0.6);
+}
+
+.filterContainer button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterContainer button.applySearch {
+    background-color: #6a6ad8;
+}
+
+.filterContainer button.applySearch:hover {
+    background-color: #5050d0;
+}
+
 
 .addNewService {
     padding: 10px 20px;
-    background-color: #6a6ad8;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background: linear-gradient(90deg, #5050d0, #6a6ad8);
+    box-shadow: 0 4px 15px rgba(106, 106, 216, 0.6);
 }
 
 .addNewService:hover {
-    background-color: #5050d0;
+    background: linear-gradient(90deg, #6a6ad8, #5050d0);
+    box-shadow: 0 6px 20px rgba(106, 106, 216, 0.8);
 }

@@ -96,54 +96,54 @@ const AddGameModal = ({ isOpen, onClose, onSave }) => {
             isOpen={isOpen}
             title="Добавить игру"
             content={
-                <div className={modalStyles.modalBody}>
-                    <label htmlFor="gameImage">Изображение игры:</label>
-                    <input
-                        type="file"
-                        id="gameImage"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        required
-                    />
-                    {previewImage && (
-                        <div>
-                            <img src={previewImage} alt="Preview" />
-                        </div>
-                    )}
-
-                    <label htmlFor="gameTitle">Название игры:</label>
-                    <input
-                        type="text"
-                        id="gameTitle"
-                        value={gameTitle}
-                        onChange={(e) => setGameTitle(e.target.value)}
-                        required
-                    />
-                    <label htmlFor="gameDescription">Описание игры:</label>
-                    <textarea
-                        id="gameDescription"
-                        value={gameDescription}
-                        onChange={(e) => setGameDescription(e.target.value)}
-                        required
-                    />
+                <div className={modalStyles.modalContent}>
                     <div>
-                        <h3>Категории</h3>
-                        {renderCategories(categories)}
-                        <button
-                            type="button"
-                            className={modalStyles.addCategoryBtn}
-                            onClick={() => addCategory(categories)}
-                        >
-                            Добавить категорию
-                        </button>
+                        <label htmlFor="gameImage">Изображение игры:</label>
+                        <input
+                            type="file"
+                            id="gameImage"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            required
+                        />
+                        {previewImage && (
+                            <div>
+                                <img src={previewImage} alt="Preview"/>
+                            </div>
+                        )}
+
+                        <label htmlFor="gameTitle">Название игры:</label>
+                        <input
+                            type="text"
+                            id="gameTitle"
+                            value={gameTitle}
+                            onChange={(e) => setGameTitle(e.target.value)}
+                            required
+                        />
+                        <label htmlFor="gameDescription">Описание игры:</label>
+                        <textarea
+                            id="gameDescription"
+                            value={gameDescription}
+                            onChange={(e) => setGameDescription(e.target.value)}
+                            required
+                        />
+                        <div>
+                            <h3>Категории</h3>
+                            {renderCategories(categories)}
+                            <button
+                                type="button"
+                                className={modalStyles.addCategoryBtn}
+                                onClick={() => addCategory(categories)}
+                            >
+                                Добавить категорию
+                            </button>
+                        </div>
                     </div>
                 </div>
             }
             actions={
                 <div>
-                    <button className={modalStyles.saveBtn} onClick={saveGame}>
-                        Сохранить
-                    </button>
+                    <button className={modalStyles.saveBtn} onClick={saveGame}>Save</button>
                 </div>
             }
             onClose={onClose}

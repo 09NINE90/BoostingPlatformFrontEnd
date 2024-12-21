@@ -1,11 +1,9 @@
 .modalContent {
-    background-color: #2d2c3c;
-    border-radius: 15px;
     max-width: 900px;
-    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
     position: relative;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow-y: auto;
+    padding: 20px;
 }
 
 .imagePreview {
@@ -56,28 +54,21 @@
 }
 
 
-.saveBtn,
-.cancelBtn {
+.saveBtn{
+    color: #fff;
     padding: 10px 20px;
+    margin-bottom: 10px;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
+    background: linear-gradient(90deg, #5050d0, #6a6ad8);
+    box-shadow: 0 4px 15px rgba(106, 106, 216, 0.6);
 }
 
-.saveBtn {
-    background-color: #6a6ad8;
-    color: #fff;
+.saveBtn:hover {
+    background: linear-gradient(90deg, #6a6ad8, #5050d0);
+    box-shadow: 0 6px 20px rgba(106, 106, 216, 0.8);
 }
-
-.cancelBtn:hover {
-    background-color: #ff5454;
-}
-
-.cancelBtn {
-    background-color: #ff4c4c;
-    color: #fff;
-}
-

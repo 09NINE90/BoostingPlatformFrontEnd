@@ -63,7 +63,7 @@ const EditServiceModal = ({ isOpen, onClose, onSave, service, games }) => {
             isOpen={isOpen}
             title="Редактировать услугу"
             content={
-                <div className={styles.modalBody}>
+                <div className={styles.modalContent}>
                     <label>Изображение:</label>
                     <input
                         type="text"
