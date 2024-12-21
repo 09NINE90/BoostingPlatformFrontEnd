@@ -1,0 +1,16 @@
+.promo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.promoLeft, .promoRight {
+    border: 2px solid #4a4a6a;
+    padding: 20px;
+}
+
+.promoCenter img {
+    max-width: 100%;
+    border-radius: 10px;
+}

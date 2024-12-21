@@ -17,10 +17,9 @@ const ChatSection = () => {
 
     const filteredChats = chats.filter((chat) => activeFilter === "all" || chat.type === activeFilter);
 
-    console.log("Filtered chats:", filteredChats);
-
     return (
         <div className={styles.mainContent}>
+            {/* Фильтры */}
             <div className={styles.chatFilters}>
                 {["all", "customer", "booster", "archive"].map((filter) => (
                     <button
@@ -32,7 +31,10 @@ const ChatSection = () => {
                     </button>
                 ))}
             </div>
+
+            {/* Основной макет: Список чатов + Окно чата */}
             <div className={styles.chatLayout}>
+                {/* Список чатов */}
                 <div className={styles.chatList}>
                     <ul>
                         {filteredChats.map((chat) => (
@@ -42,26 +44,39 @@ const ChatSection = () => {
                                 onClick={() => setSelectedChat(chat)}
                             >
                                 <h4>Order ID: {chat.orderId}</h4>
-                                <p>Last Message: {chat.lastMessage}</p>
+                                <p>{chat.lastMessage}</p>
                                 <span>{chat.timestamp}</span>
                             </li>
                         ))}
                     </ul>
                 </div>
+
+                {/* Окно чата */}
                 <div className={styles.chatWindow}>
                     {selectedChat ? (
                         <>
+                            {/* Заголовок чата */}
+                            <div className={styles.chatHeader}>
+                                <h3>Order ID: {selectedChat.orderId}</h3>
+                                <p>Type: {selectedChat.type.charAt(0).toUpperCase() + selectedChat.type.slice(1)}</p>
+                            </div>
+
+                            {/* Сообщения */}
                             <div className={styles.chatMessages}>
                                 <div className={styles.message}>Hey! <span className={styles.time}>12:45 PM</span></div>
                                 <div className={styles.message}>Hello! <span className={styles.time}>12:46 PM</span></div>
                             </div>
+
+                            {/* Поле ввода */}
                             <div className={styles.chatInput}>
                                 <input type="text" placeholder="Write a message..." />
                                 <button>&rarr;</button>
                             </div>
                         </>
                     ) : (
-                        <p className={styles.selectPrompt}>Select a chat to view messages</p>
+                        <div className={styles.noChatSelected}>
+                            <p>Select a chat to view messages</p>
+                        </div>
                     )}
                 </div>
             </div>

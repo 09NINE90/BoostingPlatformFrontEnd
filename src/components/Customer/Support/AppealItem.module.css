@@ -1,0 +1,45 @@
+.appeal {
+    background-color: #3a3950;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.3s;
+    color: #fff;
+}
+
+.appeal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.appeal p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.status {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.status.solved {
+    color: #4caf50;
+}
+
+.status.in-progress {
+    color: #ff9800;
+}
+
+.viewBtn {
+    background-color: #6969d6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+

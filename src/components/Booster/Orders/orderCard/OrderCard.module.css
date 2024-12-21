@@ -5,6 +5,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     width: 300px;
     transition: transform 0.3s ease;
+    border: 1px solid #6a6ad8;
 }
 
 .card:hover {
@@ -26,21 +27,24 @@
     color: #ccc;
 }
 
+/* Стили статуса */
 .status {
     font-weight: bold;
+    font-size: 14px;
 }
 
 .in-progress {
-    color: #4caf50;
+    color: #ff9800; /* Оранжевый для "In Progress" */
 }
 
 .done {
-    color: #6ad86a;
+    color: #4caf50; /* Зеленый для "Done" */
 }
 
 .not-started {
-    color: #ff4c4c;
+    color: #ff4c4c; /* Красный для "Not Started" */
 }
+
 
 .action {
     background-color: #6a6ad8;

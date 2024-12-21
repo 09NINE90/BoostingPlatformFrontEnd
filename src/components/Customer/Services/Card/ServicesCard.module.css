@@ -1,0 +1,67 @@
+.gameCard {
+    background: linear-gradient(145deg, #2d2c3c, #3a3950);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #6a6ad8;
+}
+
+.gameCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0);
+    border-radius: 15px;
+}
+
+.gameCard:hover::before {
+    transform: scale(1);
+}
+
+.gameCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(145deg, #3a3950, #2d2c3c);
+}
+
+.gameCard img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.gameCard:hover img {
+    transform: scale(1.1);
+}
+
+.gameCard h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.gameCard a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    z-index: 1;
+}
+
+.gameCard a:hover h3 {
+    color: #ff4c4c;
+}

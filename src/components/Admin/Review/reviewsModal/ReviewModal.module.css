@@ -1,21 +1,84 @@
-.modalActions {
+/* Основной контейнер модального окна */
+.modalBody {
     display: flex;
-    justify-content: center; /* Центрируем кнопки */
-    gap: 20px; /* Расстояние между кнопками */
-    margin-top: 25px; /* Отступ сверху */
-    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
+    gap: 20px;
+    width: 80vw; /* Ширина окна */
+    max-height: 90vh; /* Ограничение по высоте */
+    height: 60vh;
+    padding: 20px;
+    background-color: #1d1d2b;
+    border-radius: 12px;
+    box-shadow: 1px 8px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
 }
 
+/* Левая секция: Information */
+.infoSection {
+    flex: 0 0 30%; /* Занимает 30% ширины */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    border: 1px solid #6a6ad8;
+}
+
+.infoSection p {
+    color: #b0b0b0;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.infoActions {
+    margin-top: auto; /* Прижимаем кнопки к низу секции */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Правая секция: Review Text */
+.reviewSection {
+    flex: 1; /* Занимает оставшиеся 70% ширины */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    border: 1px solid #9d9dff;
+}
+
+.reviewSection label {
+    font-size: 14px;
+    color: #6a6ad8;
+    font-weight: bold;
+}
+
+.reviewTextarea {
+    flex: 1; /* Растягивается на доступное пространство */
+    resize: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #1c1b29;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Кнопки */
 .editBtn,
 .applyBtn,
 .rejectBtn {
     padding: 10px 20px;
     border-radius: 8px;
+    font-size: 14px;
     font-weight: bold;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
 }
 
 .editBtn {
@@ -43,16 +106,4 @@
 
 .rejectBtn:hover {
     background-color: #d93636;
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }

@@ -1,23 +1,40 @@
+/* Основной контейнер модального окна */
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    max-height: 100%;
+    height: 70vh;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #2d2c3c;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Контейнер для секций */
 .modalBody {
     display: flex;
-    gap: 10px;
-    padding: 10px;
-    height: 900px;
-    width: 1500px;
-    overflow-y: auto;
-
+    flex-direction: row;
+    gap: 20px;
+    flex: 1; /* Растягиваем до доступной высоты */
+    width: 100%;
+    height: 100%;
 }
 
 .orderInfo {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #1c1b29;
     border-radius: 8px;
     padding: 15px;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    width: 25%; /* Боковые секции занимают четверть ширины */
+    height: auto;
+    box-sizing: border-box;
+    border: 1px solid #6a6ad8;
 }
 
 .orderInfo h3 {
@@ -149,15 +166,16 @@
 
 
 .chatBox {
-    flex: 1.5;
-    background-color: #1c1b29;
-    border-radius: 8px;
-    padding: 15px;
-    color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #3a3950;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 10px;
+    width: 50%; /* Центральная секция шире */
+    height: auto;
+    box-sizing: border-box;
+    border: 1px solid #9d9dff;
 }
 
 .chatBox h3 {
@@ -216,12 +234,15 @@
 
 /* Правая колонка: Дополнительная информация */
 .additionalInfo {
-    flex: 1;
     background-color: #1c1b29;
     border-radius: 8px;
     padding: 15px;
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    width: 25%; /* Занимает треть ширины */
+    height: auto;
+    box-sizing: border-box;
+    border: 1px solid #6a6ad8; /* Добавлена граница */
 }
 
 .additionalInfo h3 {

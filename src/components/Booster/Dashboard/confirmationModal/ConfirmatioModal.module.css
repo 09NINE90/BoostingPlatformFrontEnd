@@ -31,7 +31,8 @@
     display: flex;
     justify-content: center; /* Центрируем кнопку по горизонтали */
     width: 100%;
-    margin-top: 10px;
+    margin: 10px auto 20px;
+
 }
 
 /* Кнопка подтверждения */

@@ -19,13 +19,47 @@ import ServicesPage from "./components/Admin/Service/servicePage/ServicesPage.js
 import DashboardPage from "./components/Booster/Dashboard/DashboardPage.jsx";
 import Order from "./components/Booster/Orders/OrderPage.jsx";
 import GameTags from "./components/Booster/gameTags/GameTagsPage.jsx";
+import BoosterProfilePage from "./components/Booster/Profile/ProfilePage/ProfilePage.jsx";
+
+
 import ProfilePage from "./components/Manager/profile/Profile.jsx";
+
+import CustomerHomePage from "./components/Customer/Home/Page/CHomePage.jsx";
+import CustomerServicesPage from "./components/Customer/Services/Page/ServicesPage.jsx";
+import CustomerSupportPage from "./components/Customer/Support/SupportPage.jsx";
+import CustomerReviewsPage from "./components/Customer/Reviews/ReviewsPage.jsx";
+import CustomerProfilePage from "./components/Customer/Profile/ProfilePage.jsx";
 
 const App = () => {
     return (
         <>
             <Navigation />
             <Routes>
+                <Route
+                    exact
+                    path="/Customer/CHomePage"
+                    element={<CustomerHomePage />}
+                />
+                <Route
+                    exact
+                    path="/Customer/ServicesPage"
+                    element={<CustomerServicesPage />}
+                />
+                <Route
+                    exact
+                    path="/Customer/SupportPage"
+                    element={<CustomerSupportPage />}
+                />
+                <Route
+                    exact
+                    path="/Customer/ReviewsPage"
+                    element={<CustomerReviewsPage />}
+                />
+                <Route
+                    exact
+                    path="/Customer/ProfilePage"
+                    element={<CustomerProfilePage />}
+                />
                 <Route
                     exact
                     path="/homePage"
@@ -61,6 +95,11 @@ const App = () => {
                     exact
                     path="/Booster/gameTagsPage"
                     element={<GameTags />}
+                />
+                <Route
+                    exact
+                    path="/Booster/ProfilePage"
+                    element={<BoosterProfilePage />}
                 />
                 <Route
                     exact

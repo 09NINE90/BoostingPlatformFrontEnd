@@ -1,0 +1,45 @@
+.trustSection {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #2d2c3c;
+    border-radius: 15px;
+}
+
+.trustSection h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.trustSection .highlight {
+    color: #ff4c4c;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 76, 76, 0.8);
+}
+
+.trustInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.trustRating {
+    text-align: center;
+    background-color: #1c1b29;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #6a6ad8;
+}
+
+.trustRating img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.trustDetails {
+    max-width: 600px;
+    text-align: left;
+    color: #fff;
+}

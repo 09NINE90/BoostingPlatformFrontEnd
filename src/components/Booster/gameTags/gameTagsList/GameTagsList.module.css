@@ -1,16 +1,19 @@
 .gameTagsList {
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
     background-color: #1c1b29;
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 1px solid #6a6ad8;
 }
 
 .gameTagsList h3 {
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
-    color: #ff4c4c;
-    margin-bottom: 15px;
+    color: #6a6ad8;
+    margin-bottom: 20px;
 }
 
 .gameTagsList ul {
@@ -20,11 +23,11 @@
 }
 
 .gameTagsList li {
-    margin-bottom: 1.1rem;
+    margin-bottom: 10px;
 }
 
 .gameTag {
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #6a6ad8;
     color: #fff;
     border: none;
@@ -34,6 +37,7 @@
     width: 100%;
     text-align: center;
     transition: background-color 0.3s ease;
+
 }
 
 .gameTag:hover {

@@ -1,0 +1,15 @@
+.supportHeader {
+    text-align: center;
+    padding: 40px;
+    background-color: #2d2c3c;
+    border-radius: 15px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight {
+    color: #ff4c4c;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 76, 76, 0.8);
+    font-size: 1.2em;
+}

@@ -1,0 +1,31 @@
+.order {
+    border: 1px solid #4a4a6a;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #3a3950;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.order:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.order p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.active {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.inactive {
+    color: #f44336;
+    font-weight: bold;
+}

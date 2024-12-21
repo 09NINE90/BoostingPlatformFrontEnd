@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1b29;
+    color: #fff;
+    line-height: 1.6;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Основной контейнер приложения */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Высота всей страницы */
+}
+
+/* Главный контент */
+.mainContent {
+    flex: 1; /* Растягивается на оставшееся пространство между Navbar и Footer */
+    padding: 20px;
+    background-color: #1c1b29;
+    color: #fff;
+}

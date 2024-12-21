@@ -1,0 +1,47 @@
+.profileInfo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.profileCard {
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+}
+
+.profileHeader img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #ff4c4c;
+}
+
+.profileHeader h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #ff4c4c;
+}
+
+.profileHeader p {
+    font-size: 16px;
+    color: #aaa;
+}
+
+.profileStats p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.profileStats span {
+    color: #ff4c4c;
+    font-weight: bold;
+}

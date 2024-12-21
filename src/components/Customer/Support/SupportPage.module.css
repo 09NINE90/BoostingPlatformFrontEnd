@@ -1,0 +1,7 @@
+.supportPage {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

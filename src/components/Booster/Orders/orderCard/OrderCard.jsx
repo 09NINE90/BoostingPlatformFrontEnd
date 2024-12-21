@@ -12,9 +12,12 @@ const OrderCard = ({ order, onOpenModal }) => {
                 <p>Game: {order.game}</p>
                 <p>Platform: {order.platform}</p>
                 <p>Service: {order.service}</p>
-                <p>Status: <span className={`${styles.status} ${styles[order.status]}`}>{order.status}</span></p>
+                <p>Status:
+                    <span className={`${styles.status} ${styles[order.status.replace(" ", "-").toLowerCase()]}`}>
+                        {order.status}
+                    </span>
+                </p>
                 <p>Estimate date: {order.estimateDate}</p>
-                <p>Last message: {order.lastMessage}</p>
             </div>
             <button className={styles.action} onClick={() => onOpenModal(order)}>
                 {order.status === "done" ? "Finished" : "Start Session"}

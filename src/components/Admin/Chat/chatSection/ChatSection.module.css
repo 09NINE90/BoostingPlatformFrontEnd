@@ -3,13 +3,16 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    height: 1200px;
+    height: 100vh;
+    background-color: #1c1b29;
+    color: #fff;
 }
 
+/* Фильтры */
 .chatFilters {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    justify-content: center;
 }
 
 .filterBtn {
@@ -19,19 +22,20 @@
     border-radius: 5px;
     color: #fff;
     font-weight: bold;
-    text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .filterBtn.active {
     background-color: #6a6ad8;
+    transform: scale(1.05);
 }
 
 .filterBtn:hover {
     background-color: #5050d0;
 }
 
+/* Основной макет */
 .chatLayout {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -39,11 +43,12 @@
     height: 100%;
 }
 
+/* Список чатов */
 .chatList {
     background-color: #2d2c3c;
     border-radius: 10px;
-    overflow-y: auto;
     padding: 15px;
+    overflow-y: auto;
 }
 
 .chatList ul {
@@ -56,8 +61,6 @@
     padding: 15px;
     border-bottom: 1px solid #3a3950;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -86,6 +89,7 @@
     color: #ddd;
 }
 
+/* Окно чата */
 .chatWindow {
     background-color: #2d2c3c;
     border-radius: 10px;
@@ -96,10 +100,29 @@
     overflow-y: auto;
 }
 
+.chatHeader {
+    border-bottom: 1px solid #3a3950;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.chatHeader h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #fff;
+}
+
+.chatHeader p {
+    margin: 0;
+    font-size: 14px;
+    color: #9d9dff;
+}
+
+/* Сообщения */
 .chatMessages {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .message {
@@ -108,9 +131,15 @@
     background-color: #6a6ad8;
     border-radius: 5px;
     color: #fff;
-    display: inline-block;
 }
 
+.time {
+    font-size: 12px;
+    color: #ddd;
+    margin-left: 10px;
+}
+
+/* Поле ввода */
 .chatInput {
     display: flex;
     gap: 10px;
@@ -132,4 +161,18 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.chatInput button:hover {
+    background-color: #5050d0;
+}
+
+.noChatSelected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+    color: #aaa;
 }

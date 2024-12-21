@@ -1,10 +1,11 @@
 import React from "react";
-import styles from "../gameTagsForm/GameTagsForm.module.css";
+import styles from "./GameTagsForm.module.css";
 
 const GameTagsForm = () => {
     return (
         <div className={styles.gameTagsForm}>
             <form>
+                <h2>Game Tags Form</h2>
                 <div className={styles.checkboxGroup}>
                     <label className={styles.customCheckbox}>
                         <input type="checkbox" name="pvp" />
@@ -26,9 +27,9 @@ const GameTagsForm = () => {
                     </div>
                 </div>
                 <div className={styles.statusGroup}>
-                    <span>Active: <strong>TRUE</strong></span>
+                    <span>Status: <strong>Active</strong></span>
                 </div>
-                <button type="submit" className={styles.submitBtn}>SEND</button>
+                <button type="submit" className={styles.submitBtn}>Submit</button>
             </form>
         </div>
     );

@@ -1,17 +1,69 @@
-.modalBody p {
-    color: #b0b0b0;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.modalActions {
+/* Основной контейнер модального окна */
+.modalBody {
     display: flex;
-    justify-content: center; /* Центрируем кнопки */
-    gap: 20px; /* Расстояние между кнопками */
-    margin-top: 25px; /* Отступ сверху */
-    padding: 10px 0; /* Дополнительное пространство сверху и снизу */
+    gap: 20px;
+    width: 80vw; /* Ширина окна */
+    max-height: 90vh; /* Высота окна */
+    height: 60vh;
+    padding: 20px;
+    background-color: #1d1d2b;
+    border-radius: 12px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
 }
 
+/* Левая секция: Information */
+.infoSection {
+    flex: 1; /* Занимает 50% ширины */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    color: #fff;
+    border: 1px solid #6a6ad8;
+}
+
+/* Кнопки в секции Information */
+.infoActions {
+    margin-top: auto; /* Прижимаем кнопки к низу секции */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Правая секция: Working Appeal Message */
+.messageSection {
+    flex: 1; /* Занимает оставшиеся 50% ширины */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2d2c3c;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #9d9dff;
+}
+
+.messageSection h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.messageInput {
+    flex: 1; /* Растягивается на доступное пространство */
+    resize: none;
+    height: auto;
+    border: none;
+    border-radius: 8px;
+    background-color: #1c1b29;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Кнопки Approve и Deny */
 .approveBtn,
 .denyBtn {
     padding: 12px 25px;
@@ -33,10 +85,6 @@
     background-color: #5050d0;
 }
 
-.approveBtn:active {
-    transform: scale(0.95);
-}
-
 .denyBtn {
     background-color: #ff4c4c;
     color: #fff;
@@ -45,8 +93,4 @@
 
 .denyBtn:hover {
     background-color: #d93636;
-}
-
-.denyBtn:active {
-    transform: scale(0.95);
 }

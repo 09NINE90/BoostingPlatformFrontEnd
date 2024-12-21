@@ -1,0 +1,19 @@
+.liveReviews {
+    padding: 40px 20px;
+    background-color: #232234;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.liveReviews h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.reviewCards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}

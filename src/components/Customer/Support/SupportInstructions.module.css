@@ -1,0 +1,14 @@
+.supportInstructions {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #232234;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.8;
+    color: #fff;
+}
+
+.supportInstructions h2 {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    text-align: center;
+}

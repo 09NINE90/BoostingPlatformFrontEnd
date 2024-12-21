@@ -4,7 +4,7 @@ import styles from "./GameTagsList.module.css";
 const GameTagsList = ({ games }) => {
     return (
         <div className={styles.gameTagsList}>
-            <h3>Games</h3>
+            <h3>Game Tags</h3>
             <ul>
                 {games.map((game, index) => (
                     <li key={index}>

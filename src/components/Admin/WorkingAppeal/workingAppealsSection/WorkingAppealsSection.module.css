@@ -24,6 +24,7 @@
     background-color: #6a6ad8;
     color: #fff;
     cursor: pointer;
+    border: none;
 }
 
 .filterContainer button:hover {

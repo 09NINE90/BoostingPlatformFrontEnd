@@ -1,7 +1,23 @@
 export const LinksData = [
     {
-        path: "/homePage",
-        name: "Home"
+        path: "/Customer/CHomePage",
+        name: "C Home"
+    },
+    {
+        path: "/Customer/ServicesPage",
+        name: "Services"
+    },
+    {
+        path: "/Customer/SupportPage",
+        name: "Support"
+    },
+    {
+        path: "/Customer/ReviewsPage",
+        name: "Reviews"
+    },
+    {
+        path: "/Customer/ProfilePage",
+        name: "Profile"
     },
     {
         path: "/servicesPage",
@@ -24,12 +40,12 @@ export const LinksData = [
         name: "My Game Tags"
     },
     {
-        path: "/Booster/profilePage",
-        name: "Profile"
+        path: "/Booster/ProfilePage",
+        name: "Profile B"
     },
     {
         path: "/Manager/profile",
-        name: "Profile"
+        name: "Profile M"
     }
 ];
 
