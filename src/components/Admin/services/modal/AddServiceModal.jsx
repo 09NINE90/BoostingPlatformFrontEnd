@@ -22,18 +22,6 @@ const AddServiceModal = ({ isOpen, onClose, onSave, games }) => {
         }
     };
 
-    // Сброс состояния при открытии модального окна
-    useEffect(() => {
-        if (isOpen) {
-            setImage("");
-            setSelectedGameId("");
-            setCategories([]);
-            setCurrentCategoryPath([]);
-            setDescription("");
-            setPrice("");
-        }
-    }, [isOpen]);
-
     // Обновление категории при выборе
     const handleCategorySelect = (level, selectedIndex) => {
         const newPath = currentCategoryPath.slice(0, level);
@@ -79,6 +67,18 @@ const AddServiceModal = ({ isOpen, onClose, onSave, games }) => {
 
         onSave(formData);
     };
+
+    // Сброс состояния при открытии модального окна
+    useEffect(() => {
+        if (isOpen) {
+            setImage('');
+            setSelectedGameId('');
+            setCategories([]);
+            setCurrentCategoryPath([]);
+            setDescription('');
+            setPrice('');
+        }
+    }, [isOpen]);
 
     return (
         <ModalTemplate

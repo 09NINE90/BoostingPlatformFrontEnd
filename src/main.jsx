@@ -34,7 +34,7 @@ export const App = () => {
     useEffect(() => {
         const fetchAuthentication = async () => {
             try {
-                const { roles, token } = await getAuthenticated();
+                const {roles, token} = await getAuthenticated();
 
                 if (token) {
                     dispatch(setAuth(true));
@@ -54,23 +54,29 @@ export const App = () => {
     return (
         <BrowserRouter>
             <div className={isAuthenticated ? 'auth-container-active' : 'auth-container'}>
-                {isAdmin && <Header/>}
-                {isAdmin && <Sidebar/>}
                 {isCustomer && <Navigation/>}
             </div>
-            <Routes>
-                <Route exact path="/" element={<SignInForm/>}/>
-                <Route exact path="admin" element={<ProtectedRoute allowedRoles={"ADMIN"}/>}>
-                    <Route exact path="games" element={<GameSection/>}/>
-                    <Route exact path="services" element={<ServiceSection/>}/>
-                </Route>
-                <Route element={<ProtectedRoute allowedRoles={"CUSTOMER"}/>}>
-                    <Route exact path="/home" element={<HomePage/>}/>
-                    <Route exact path="/services" element={<ServicesPage/>}/>
-                </Route>
-                <Route exact path="/signInForm" element={<SignInForm/>}/>
-                <Route exact path="/signUpForm" element={<SignUpForm/>}/>
-            </Routes>
+
+            <div className={isAdmin ? 'dashboard-active' : 'dashboard'}>
+                {isAdmin && <Header/>}
+                <div className={isAdmin ? 'main-container-active' : 'main-container'}>
+                    {isAdmin && <Sidebar/>}
+                    <Routes>
+                        <Route exact path="/" element={<SignInForm/>}/>
+                        <Route exact path="admin" element={<ProtectedRoute allowedRoles={"ADMIN"}/>}>
+                            <Route exact path="games" element={<GameSection/>}/>
+                            <Route exact path="services" element={<ServiceSection/>}/>
+                        </Route>
+                        <Route element={<ProtectedRoute allowedRoles={"CUSTOMER"}/>}>
+                            <Route exact path="/home" element={<HomePage/>}/>
+                            <Route exact path="/services" element={<ServicesPage/>}/>
+                        </Route>
+                        <Route exact path="/signInForm" element={<SignInForm/>}/>
+                        <Route exact path="/signUpForm" element={<SignUpForm/>}/>
+                    </Routes>
+                </div>
+            </div>
+
         </BrowserRouter>
     )
 };

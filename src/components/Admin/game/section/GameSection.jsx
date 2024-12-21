@@ -2,7 +2,7 @@ import styles from "./GameSection.module.css";
 import {useEffect, useState} from "react";
 import AddGameModal from "../modal/AddGameModal.jsx";
 import GameCard from "../card/GameCard.jsx";
-import {getAllGamesByPageApi} from "../../../../api/gamesApi.jsx";
+import {addGameApi, getAllGamesByPageApi} from "../../../../api/gamesApi.jsx";
 
 const GameSection = () => {
     const [isAddGameModalOpen, setIsAddGameModalOpen] = useState(false);
@@ -22,17 +22,21 @@ const GameSection = () => {
     };
 
     // Сохранение новой игры
-    const handleSaveGame = (gameData) => {
+    const saveGame = async (gameData) => {
+
+        const response = await addGameApi(gameData);
+
+
         if (selectedGame) {
             // Если редактирование, обновляем существующую игру
             setGames((prevGames) =>
-                prevGames.map((game) => (game.id === selectedGame.id ? { ...gameData, id: game.id } : game))
+                prevGames.map((game) => (game.id === selectedGame.id ? {...response, id: game.id} : game))
             );
         } else {
             // Если создание новой игры, добавляем её
             setGames((prevGames) => [
                 ...prevGames,
-                { ...gameData, id: new Date().getTime() }, // Генерируем уникальный id
+                {...response, id: new Date().getTime()}, // Генерируем уникальный id
             ]);
         }
 
@@ -73,7 +77,7 @@ const GameSection = () => {
                     <GameCard
                         key={game.id}
                         id={game.id}
-                        image={game.image}
+                        imageUrl={game.imageUrl}
                         title={game.title}
                         description={game.description}
                         categories={game.categories}
@@ -90,7 +94,7 @@ const GameSection = () => {
                     setIsEditGameModalOpen(false);
                     setSelectedGame(null);
                 }}
-                onSave={handleSaveGame}
+                onSave={saveGame}
                 gameData={selectedGame} // Передаем данные выбранной игры в модальное окно
             />
         </section>

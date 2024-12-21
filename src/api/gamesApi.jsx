@@ -17,6 +17,11 @@ export const getAllGamesByPageApi = async (requestData) => {
 }
 
 export const addGameApi = async (requestData) => {
-    const response = await axios.post(`${baseUrl}/games/addNewGame`, requestData, {withCredentials: true});
+    const response = await axios.post(`${baseUrl}/games/addNewGame`, requestData,{
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+    });
     return response.data;
 }

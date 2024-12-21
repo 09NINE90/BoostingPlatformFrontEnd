@@ -15,7 +15,7 @@
 
 .servicesGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Карточки масштабируются */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Карточки масштабируются */
     gap: 20px; /* Расстояние между карточками */
     justify-content: start; /* Карточки выровнены слева */
 }
