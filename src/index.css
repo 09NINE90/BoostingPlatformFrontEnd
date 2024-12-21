@@ -36,3 +36,13 @@ body {
   width: 100%;
 }
 
+.dashboard-active {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.main-container-active {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: calc(100vh - 64px);
+}
