@@ -34,7 +34,7 @@ const ServiceSection = () => {
         }
     };
 
-    const addService = async (formData) => {
+    const saveService = async (formData) => {
         try {
             const response = await addServiceApi(formData);
             if (response.status === 200) {
@@ -118,7 +118,7 @@ const ServiceSection = () => {
                 <AddServiceModal
                     isOpen={isAddModalOpen}
                     onClose={closeAddModal}
-                    onSave={addService}
+                    onSave={saveService}
                     games={games}
                 />
             )}
