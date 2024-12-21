@@ -30,4 +30,5 @@
 .sidebar ul li.active a,
 .sidebar ul li a:hover {
     background-color: #6a6ad8;
+    border-radius: 5px;
 }
