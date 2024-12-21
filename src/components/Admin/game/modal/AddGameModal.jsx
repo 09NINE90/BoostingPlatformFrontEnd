@@ -1,11 +1,10 @@
 import modalStyles from "./GameModal.module.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ModalTemplate from "../../../utils/modalTemplate/ModalTemplate.jsx";
-import {addGameApi} from "../../../../api/gamesApi.jsx";
+import styles from "../../services/modal/AddServiceModal.module.css";
 
 const AddGameModal = ({isOpen, onClose, onSave}) => {
     const [gameImage, setGameImage] = useState(null); // Состояние для изображения
-    const [previewImage, setPreviewImage] = useState(""); // Для предпросмотра изображения
     const [gameTitle, setGameTitle] = useState("");
     const [gameDescription, setGameDescription] = useState("");
     const [categories, setCategories] = useState([]);
@@ -53,6 +52,15 @@ const AddGameModal = ({isOpen, onClose, onSave}) => {
         onClose();
     };
 
+    useEffect(() => {
+        if (isOpen) {
+            setGameImage('');
+            setGameTitle('');
+            setGameDescription('');
+            setCategories([]);
+        }
+    }, [isOpen]);
+
     const renderCategories = (parentCategories) =>
         parentCategories.map((category, index) => (
             <div key={index} className={modalStyles.category}>
@@ -99,9 +107,9 @@ const AddGameModal = ({isOpen, onClose, onSave}) => {
                         onChange={(e) => setGameImage(URL.createObjectURL(e.target.files[0]))}
                         required
                     />
-                    {previewImage && (
-                        <div>
-                            <img src={previewImage} alt="Preview"/>
+                    {gameImage && (
+                        <div className={styles.imagePreview}>
+                            <img src={gameImage} alt="Preview"/>
                         </div>
                     )}
 
