@@ -3,7 +3,7 @@ import ModalTemplate from "../../../ModalTemplate/ModalTemplate.jsx";
 import styles from "./UserModal.module.css";
 
 const UserModal = ({ isOpen, onClose, user }) => {
-    const [miniModalType, setMiniModalType] = useState(null); // Тип мини-модала: ban или fine
+    const [miniModalType, setMiniModalType] = useState(null);
 
     const openMiniModal = (type) => {
         setMiniModalType(type);
@@ -14,7 +14,7 @@ const UserModal = ({ isOpen, onClose, user }) => {
     };
 
     const mainModalContent = (
-        <div>
+        <div className={styles.modalContent}>
             <label>Nickname:</label>
             <input type="text" defaultValue={user.nickname} />
 
@@ -52,36 +52,33 @@ const UserModal = ({ isOpen, onClose, user }) => {
         </div>
     );
 
-    // Содержимое мини-модала
     const miniModalContent =
         miniModalType === "ban" ? (
             <textarea placeholder="Reason for ban" className={styles.textarea}></textarea>
         ) : (
             <>
-                <input
-                    type="number"
-                    placeholder="Fine Amount"
-                    className={styles.input}
-                />
+                <input type="number" placeholder="Fine Amount" className={styles.input} />
                 <textarea placeholder="Reason for fine" className={styles.textarea}></textarea>
             </>
         );
 
     const miniModalActions = (
-        <div>
+        <div className={styles.miniModalActions}>
             <button className={styles.applyBtn}>Confirm</button>
         </div>
     );
 
+
     return (
         <>
-            {/* Основной модал */}
+            {/* Основное модальное окно */}
             <ModalTemplate
                 isOpen={isOpen}
                 title="User Settings"
                 content={mainModalContent}
                 actions={mainModalActions}
                 onClose={onClose}
+                modalClassName={styles.widerModal} // Добавляем ширину
             />
 
             {/* Встроенный мини-модал */}
