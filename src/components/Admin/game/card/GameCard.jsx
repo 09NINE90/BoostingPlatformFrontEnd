@@ -1,14 +1,20 @@
 import PropTypes from "prop-types";
 import styles from "./GameCard.module.css";
 
-const GameCard = ({ id, image, title, description, categories, onEditClick }) => (
+const GameCard = ({ id, imageUrl, title, description, categories, onEditClick }) => (
     <div className={styles.gameItem} data-id={id}>
-        <img src={image} alt={title} className={styles.gameThumbnail} />
+        <div className={styles.imageWrapper}>
+            <img
+                src={imageUrl}
+                alt={title}
+                className={styles.gameImage}
+            />
+        </div>
         <div className={styles.gameInfo}>
             <h3>{title}</h3>
             <p>{description}</p>
         </div>
-        <button className={styles.settingsBtn} onClick={() => onEditClick({ id, title, description, categories })}>
+        <button className={styles.settingsBtn} onClick={() => onEditClick({id, title, description, categories})}>
             ⚙️
         </button>
     </div>
@@ -16,7 +22,7 @@ const GameCard = ({ id, image, title, description, categories, onEditClick }) =>
 
 GameCard.propTypes = {
     id: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     categories: PropTypes.array.isRequired,
