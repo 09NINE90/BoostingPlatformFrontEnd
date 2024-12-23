@@ -1,11 +1,10 @@
 import "./AuthForms.css";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAuthStatus, setAuth, setRole} from "../../store/slice/authSlice.js";
 import {NavLink, useNavigate} from "react-router-dom";
-import InputGroup from "./InputGroup.jsx";
 import {postAuthenticated} from "../../api/authApi.jsx";
-
+import {TextField} from "@mui/material";
 
 const SignInForm = () => {
     const [username, setUsername] = useState("");
@@ -49,18 +48,25 @@ const SignInForm = () => {
             <div className="form-container">
                 <h2>Sign in</h2>
                 <form onSubmit={handleSubmit}>
-                    <InputGroup
-                        type="text"
+                    <TextField
+                        className="input-group"
+                        id="outlined-basic"
+                        label="Login"
+                        variant="outlined"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        title="Login"
                     />
-                    <InputGroup
+                    <div className="form-field"/>
+                    <TextField
+                        className="input-group"
+                        id="outlined"
+                        label="Password"
+                        variant="outlined"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        title="Password"
                     />
+                    <div className="form-field"/>
                     <button type="submit" className="btn" disabled={status === "loading"}>
                         {status === "loading" ? "Signing in..." : "Sign in"}
                     </button>

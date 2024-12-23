@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./GameCard.module.css";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const GameCard = ({ id, imageUrl, title, description, categories, onEditClick }) => (
     <div className={styles.gameItem} data-id={id}>
@@ -15,7 +16,7 @@ const GameCard = ({ id, imageUrl, title, description, categories, onEditClick })
             <p>{description}</p>
         </div>
         <button className={styles.settingsBtn} onClick={() => onEditClick({id, title, description, categories})}>
-            ⚙️
+            <SettingsIcon/>
         </button>
     </div>
 );

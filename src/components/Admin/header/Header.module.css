@@ -22,14 +22,19 @@
 .profileBtn {
     background-color: #6a6ad8;
     color: #fff;
+    border: none;
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(39, 4, 99, 0.7);
+
 }
 
 .profileBtn:hover {
-    background-color: #5050d0;
-    box-shadow: 0px 5px 15px rgba(106, 106, 216, 0.7);
+    background-color: #ffffff;
+    :first-child{
+        color: #5050d0;
+    }
 }

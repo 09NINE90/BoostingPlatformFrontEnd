@@ -5,11 +5,9 @@ import CategoryButton from './CategoryButton';
 import {getAllServicesApi} from "../../api/servicesApi.jsx";
 import {getGameByIdApi} from "../../api/gamesApi.jsx";
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
 const ServicesPage = () => {
     useEffect(() => {
-        document.title = "Services - Dead PackMan"; // Устанавливаем заголовок
+        document.title = "Services - Dead PackMan";
     }, []);
 
     const location = useLocation();
@@ -39,7 +37,7 @@ const ServicesPage = () => {
         try {
             const gameData = await getGameByIdApi(gameId);
             setCategories(gameData.categories || []);
-            getServices(); // Загружаем все заказы по умолчанию
+            getServices();
         } catch (error) {
             console.error("Ошибка загрузки данных игры:", error);
         }
@@ -81,7 +79,7 @@ const ServicesPage = () => {
         <>
             <main>
                 <div className="game-header">
-                    <h1>{game.title} Boosting Services</h1>
+                    <h1>{game.title} <br/> Boosting Services</h1>
                     <p>{game.description || "Описание отсутствует."}</p>
                 </div>
 
