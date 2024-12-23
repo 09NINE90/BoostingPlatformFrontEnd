@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./ServiceCard.module.css";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const ServiceCard = ({ service, onEdit }) => (
     <div className={styles.serviceCard}>
@@ -23,7 +24,7 @@ const ServiceCard = ({ service, onEdit }) => (
             </p>
         </div>
         <button className={styles.editButton} onClick={onEdit}>
-            ⚙️
+            <SettingsIcon/>
         </button>
     </div>
 );

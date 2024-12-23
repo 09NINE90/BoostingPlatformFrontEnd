@@ -29,9 +29,7 @@
 .settingsBtn {
     background: none;
     border: none;
-    color: #6a6ad8;
     cursor: pointer;
-    font-size: 20px;
 }
 
 .settingsBtn:hover {

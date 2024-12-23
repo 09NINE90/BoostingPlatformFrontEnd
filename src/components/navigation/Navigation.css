@@ -63,3 +63,17 @@ header .logo {
     color: #fff;
 }
 
+.logout-button {
+    margin-left: 15px;
+    border: none;
+    background: #fff;
+    color: #2a293b;
+    padding: 5px 10px;
+    border-radius: 15%;
+}
+
+.logout-button:hover {
+    background: #2a293b;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}

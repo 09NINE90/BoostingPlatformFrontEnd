@@ -6,6 +6,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {clearAuth, selectAuth, setAuth, setRole} from "/src/store/slice/authSlice.js";
 import {postLogout} from "../../api/authApi.jsx";
 import {getAllGamesApi} from "../../api/gamesApi.jsx";
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 
 const Navigation = () => {
 
@@ -116,15 +119,15 @@ const Navigation = () => {
             </nav>
 
             <div className="header-icons">
-                {isAuthenticated ? (
-                    <button onClick={handleLogout}>Logout</button>
-                ) : (
-                    <NavLink to="/signInForm">Sign in</NavLink>
-                )}
-                <a href="#" className="account">My Account</a>
                 <a href="#" className="cart" aria-label="Cart">
-                    🛒
+                    <ShoppingCartTwoToneIcon/>
                 </a>
+                <a href="#" className="account">My Account</a>
+                {isAuthenticated ? (
+                    <button onClick={handleLogout} className="logout-button"><LogoutIcon/></button>
+                ) : (
+                    <NavLink to="/signInForm"><LoginIcon/></NavLink>
+                )}
             </div>
         </header>
     );

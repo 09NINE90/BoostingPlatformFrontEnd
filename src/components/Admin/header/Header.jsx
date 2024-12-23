@@ -3,6 +3,7 @@ import {clearAuth, setAuth, setRole} from "../../../store/slice/authSlice.js";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {postLogout} from "../../../api/authApi.jsx";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const Header = () => {
@@ -29,7 +30,7 @@ const Header = () => {
             </div>
             <nav>
                 <button onClick={handleLogout} className={styles.profileBtn}>
-                    Logout
+                    <LogoutIcon/>
                 </button>
             </nav>
         </header>
