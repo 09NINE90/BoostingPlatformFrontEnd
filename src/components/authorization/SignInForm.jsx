@@ -5,6 +5,7 @@ import {selectAuthStatus, setAuth, setRole} from "../../store/slice/authSlice.js
 import {NavLink, useNavigate} from "react-router-dom";
 import {postAuthenticated} from "../../api/authApi.jsx";
 import {TextField} from "@mui/material";
+import { ADMIN_ROLE, CUSTOMER_ROLE } from "../utils/constants/roles.js";
 
 const SignInForm = () => {
     const [username, setUsername] = useState("");
@@ -29,9 +30,9 @@ const SignInForm = () => {
                 dispatch(setAuth(true))
             }
 
-            if (roles === "ADMIN") {
+            if (roles === ADMIN_ROLE) {
                 navigate("/admin/games", {replace: true});
-            } else if (roles === "CUSTOMER") {
+            } else if (roles === CUSTOMER_ROLE) {
                 navigate("/home", {replace: true});
             } else {
                 console.warn("Неизвестная роль пользователя:", roles);
