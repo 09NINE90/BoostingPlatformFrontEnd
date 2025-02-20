@@ -1,8 +1,14 @@
-# React + Vite
+# Фронтенд часть проекта V-Boosting
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание директорий
+- src - здесь находиться код проекта
+    - в каталоге components содержаться все компоненты в системе
+    - в каталоге layouts лежат элементы из которых будем собирать страницу
+    - в каталоге pages лежат страницы, которые отображаются пользователю
+    - в каталоге services находится вся логика взаимодействия с бэкендом
+    - в каталоге store находится логика описания Redux хранилищ
+    - в каталоге styles находится все стили для компонентов приложения
+    - в каталоге utils находится полезные утилиты для работы
+- public - тут содержатся все статичные файлы
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

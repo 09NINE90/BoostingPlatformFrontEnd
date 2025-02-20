@@ -1,0 +1,40 @@
+.header {
+    background: linear-gradient(to right, #2d2c3c, #5050d0);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #6a6ad8;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.logo span {
+    font-size: 16px;
+    color: #6a6ad8;
+}
+
+.profileBtn {
+    background-color: #6a6ad8;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(39, 4, 99, 0.7);
+
+}
+
+.profileBtn:hover {
+    background-color: #ffffff;
+    :first-child{
+        color: #5050d0;
+    }
+}
