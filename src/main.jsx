@@ -2,80 +2,61 @@ import './index.css';
 import {persistor, store} from "./store/store";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {createRoot} from 'react-dom/client';
-import {Provider, useDispatch, useSelector} from "react-redux";
-import HomePage from "./components/home/HomePage.jsx";
-import SignInForm from "./components/authorization/SignInForm.jsx";
-import SignUpForm from "./components/authorization/SignUpForm.jsx";
-import ServicesPage from "./components/services/ServicesPage.jsx";
-import Sidebar from "./components/Admin/sidebar/Sidebar.jsx";
-import Header from "./components/Admin/header/Header.jsx";
-import GameSection from "./components/Admin/game/section/GameSection.jsx";
-import ServiceSection from "./components/Admin/services/section/ServiceSection.jsx";
-import Navigation from "./components/navigation/Navigation.jsx";
-import ProtectedRoute from "./components/utils/routing/ProtectedRoute";
-import {selectAuth, selectRole, setAuth, setRole} from "./store/slice/authSlice.js";
-import {useEffect} from "react";
-import {getAuthenticated} from "./api/authApi.jsx";
+import {Provider} from "react-redux";
+import HomePage from "./pages/HomePage.jsx";
 import {PersistGate} from "redux-persist/integration/react";
+import ProfilePage from "./pages/ProfilePage.jsx"
+import BoosterMainPage from './pages/BoosterMainPage.jsx';
+import {ADMIN_ROLE, CUSTOMER_ROLE, BOOSTER_ROLE} from './utils/constants/roles.js'
+import Dashboard from './layouts/boosters/Dashboard.jsx';
+import Orders from './layouts/boosters/Orders.jsx';
+import OrderDetailPage from './pages/OrderDetailPage.jsx';
+import ProtectedRoute from './utils/routing/ProtectedRoute.jsx';
+
 
 const root = document.getElementById('root');
 
 export const App = () => {
-    const dispatch = useDispatch();
-
-    const isAuthenticated = useSelector(selectAuth);
-    const role = useSelector(selectRole);
-
-    const isAdmin = isAuthenticated && role === 'ADMIN';
-    const isCustomer = isAuthenticated && role === 'CUSTOMER';
-
-    console.log('isAuthenticated', isAuthenticated, 'role', role);
-
-    useEffect(() => {
-        const fetchAuthentication = async () => {
-            try {
-                const {roles, token} = await getAuthenticated();
-
-                if (token) {
-                    dispatch(setAuth(true));
-                    dispatch(setRole(roles));
-                } else {
-                    dispatch(setAuth(false));
-                }
-            } catch (error) {
-                console.error('Authentication failed:', error);
-                dispatch(setAuth(false));
-            }
-        };
-
-        fetchAuthentication();
-    }, [dispatch]);
-
     return (
         <BrowserRouter>
-            <div className={isAuthenticated ? 'auth-container-active' : 'auth-container'}>
-                {isCustomer && <Navigation/>}
-            </div>
+            <Routes>
+                <Route index path="/" element={<HomePage/>}> 
+                    
+                </Route>
+                <Route element={<ProtectedRoute allowedRoles={CUSTOMER_ROLE}/>}>
+                    <Route exact path = "/profile" element={<ProfilePage/>}></Route>
+                </Route>
+                <Route exact path="booster" element={<BoosterMainPage/>}>
+                    <Route index path="dashboard" element={<Dashboard/>} />
+                    <Route exact path="orders" element={<Orders/>}></Route>
+                    <Route exact path="orderDetail/:uuid" element={<OrderDetailPage/>}></Route>
+                </Route>
+                
+            </Routes>
 
-            <div className={isAdmin ? 'dashboard-active' : 'dashboard'}>
-                {isAdmin && <Header/>}
+            {/* <div className={isAuthenticated ? 'auth-container-active' : 'auth-container'}>
+                {isCustomer && <Navigation/>}
+            </div> */}
+
+
+
+            {/* <div className={isAdmin ? 'dashboard-active' : 'dashboard'}>
                 <div className={isAdmin ? 'main-container-active' : 'main-container'}>
-                    {isAdmin && <Sidebar/>}
                     <Routes>
-                        <Route exact path="/" element={<SignInForm/>}/>
+                        <Route exact path="/" element={<HomePage/>}/>
                         <Route exact path="admin" element={<ProtectedRoute allowedRoles={"ADMIN"}/>}>
                             <Route exact path="games" element={<GameSection/>}/>
                             <Route exact path="services" element={<ServiceSection/>}/>
                         </Route>
                         <Route element={<ProtectedRoute allowedRoles={"CUSTOMER"}/>}>
-                            <Route exact path="/home" element={<HomePage/>}/>
+                            <Route exact path = "/profile" element={<Profile/>}></Route>
                             <Route exact path="/services" element={<ServicesPage/>}/>
                         </Route>
                         <Route exact path="/signInForm" element={<SignInForm/>}/>
                         <Route exact path="/signUpForm" element={<SignUpForm/>}/>
                     </Routes>
                 </div>
-            </div>
+            </div> */}
 
         </BrowserRouter>
     )
