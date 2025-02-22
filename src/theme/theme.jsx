@@ -14,7 +14,7 @@ const darkPallete = {
         },
         background: {
           default: '#12121a',
-          paper: '#141313',
+          paper: '#1B1A27',
         },
       },
 };
