@@ -1,85 +1,170 @@
 import "../../styles/AuthForms.css";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import {setAuth, setRole} from "../../store/slice/authSlice.js";
+import { useSelector, useDispatch } from "react-redux";
 import { selectAuthStatus } from "../../store/slice/authSlice.js";
 import { NavLink, useNavigate } from "react-router-dom";
-import InputGroup from "./InputGroup.jsx";
 import {postRegister} from "../../services/authApi.jsx";
 import Button from "@mui/material/Button";
+import {TextField} from "@mui/material";
+import Alert from '@mui/material/Alert';
 
 const SignUp = ({closeModal, signInRedirect}) => {
 
     const [nickname, setNickname] = useState("");
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [requredFieldEmpty, setRequredFieldEmpty] = useState(false);
+    const [passwordFieldIsValid, setPasswordFieldIsValid] = useState(true);
+    const [emailFieldIsValid, setEmailFieldIsValid] = useState(true);
 
     const status = useSelector(selectAuthStatus);
+    const dispatch = useDispatch();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const signUp = async () => {
+        if(nickname != "" && confirmPassword != "") {
+            try {
+                if (password !== confirmPassword) {
+                    setErrorMessage("Passwords do not match!");
+                    return;
+                }
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!"); // Проверяем, совпадают ли пароли
-            return;
+                const credentials = {
+                    nickname: nickname,
+                    username: username,
+                    password: password,
+                }
+
+                const {roles} = await postRegister(credentials);
+                if (roles) {
+                    dispatch(setRole(roles));
+                    dispatch(setAuth(true));
+                    closeModal();
+                }
+            } catch(error) {
+                setErrorMessage(error.response.data || "An error occurred, please contact the administrator!");
+            }
+        } else {
+            setRequredFieldEmpty(true);
         }
-
-        const credentials = {
-            nickname: nickname,
-            username: username,
-            password: password,
-        }
-
-        const register = await postRegister(credentials);
-
-        if (register) {
-            closeModal();
-            navigate("/signInForm")
-        }
-
     };
 
+    const onChangeEmail = (email) => {
+        const isEmailValid = String(email)
+            .toLowerCase()
+            .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+        if(!isEmailValid) {
+            setEmailFieldIsValid(false);
+        } else {
+            setEmailFieldIsValid(true);
+        }
+        setEmail(email);
+    }
+
+    const onChangePassword = (password) => {
+        const isPasswordValid = String(password)
+            .toLowerCase()
+            .match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,40}$/);
+        if(!isPasswordValid) {
+            setPasswordFieldIsValid(false);
+        } else {
+            setPasswordFieldIsValid(true);
+        }
+        setPassword(password);
+    }
+
     return (
-        <>
-            <div className="container">
-                <div className="form-container">
-                    <h2>Sign up</h2>
-                    <form onSubmit={handleSubmit}>
-                        <InputGroup
-                            type="text"
-                            value={nickname}
-                            onChange={(e) => setNickname(e.target.value)}
-                            title="Nickname"
-                        />
-                        <InputGroup
-                            type="email"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            title="Email"
-                        />
-                        <InputGroup
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            title="Password"
-                        />
-                        <InputGroup
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            title="Confirm Password"
-                        />
-                        <button type="submit" className="btn" disabled={status === "loading"}>
-                            {status === "loading" ? "Signing up..." : "Create Account"}
-                        </button>
-                        <div className="form-links">
-                            <Button className="btn" onClick={signInRedirect}>Sign In</Button>
-                        </div>
-                    </form>
+        <div className="items-center justify-center p-2">
+            <div className="mb-4">By continuing, you agree to our&nbsp; 
+                <NavLink 
+                    className={"text-sky-400 hover:text-sky-700"}
+                    to="/"
+                >
+                    User Agreement
+                </NavLink>
+                &nbsp;and acknowledge that you understand the&nbsp;
+                <NavLink 
+                    className={"text-sky-400 hover:text-sky-700"}
+                    to="/"
+                >
+                    Privacy Policy
+                </NavLink>.
+            </div>
+            {
+                errorMessage && 
+                <Alert 
+                    onClick={() => setErrorMessage(null)}
+                    className="my-4"
+                    severity="error"
+                    variant="filled"
+                >
+                    {errorMessage}
+                </Alert>
+            }
+            <div>
+                <TextField
+                    error={requredFieldEmpty}
+                    required
+                    sx={{my: 1}}
+                    type="text"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                    label="Nickname"
+                />
+                <TextField
+                    error={!emailFieldIsValid || requredFieldEmpty}
+                    required
+                    sx={{my: 1}}
+                    type="email"
+                    value={email}
+                    onChange={(e) => onChangeEmail(e.target.value)}
+                    label="Email"
+                />
+                <TextField
+                    error={!passwordFieldIsValid || errorMessage === "Passwords do not match!" || requredFieldEmpty}
+                    required
+                    sx={{my: 1}}
+                    type="password"
+                    value={password}
+                    onChange={(e) => onChangePassword(e.target.value)}
+                    label="Password"
+                />
+                { !passwordFieldIsValid ? 
+                    <div className="text-[#f44336] text-sm">The minimum password length is 6. Must contain the letters digits and at least one special character.
+                    </div> : null}
+                <TextField
+                    error={requredFieldEmpty || errorMessage === "Passwords do not match!"}
+                    required
+                    sx={{mt: 1}}
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    label="Confirm Password"
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter')
+                            signUp();
+                    }}
+                />
+            </div>
+            <div className="flex flex-col items-start my-5">
+                <div>
+                    Already have account? 
+                    <NavLink 
+                        className={"text-sky-400 hover:text-sky-700"}
+                        onClick={signInRedirect}
+                    >
+                        &nbsp;Sign In
+                    </NavLink>
                 </div>
             </div>
-        </>
+            <div>
+                <Button className="w-2/3" variant="contained" color="secondary" onClick={signUp} loading={status === "loading"}>Sign Up</Button>
+            </div>
+        </div>
     );
 };
 

@@ -3,19 +3,15 @@ import {Navigate, Outlet} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAuth, selectRole} from "../../store/slice/authSlice.js";
 
-const ProtectedRoute = ({allowedRoles}) => {
+const ProtectedRoute = ({allowedRoles, isAuthCheck}) => {
 
     const isAuthenticated = useSelector(selectAuth);
     const role = useSelector(selectRole);
 
-    if (!isAuthenticated) {
+    if (isAuthCheck && !isAuthenticated) {
         return <Navigate to="/"/>;
     }
-    if (!role) {
-        return <Navigate to="/"/>;
-    }
-
-    if (role !== allowedRoles) {
+    if (!isAuthCheck && role !== allowedRoles) {
         return <Navigate to="/" replace/>;
     }
 

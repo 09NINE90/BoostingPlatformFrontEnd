@@ -2,8 +2,9 @@ import React from 'react';
 import styles from '../../styles/Header.module.css'
 import { Link} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { IconButton } from '@mui/material';
+import { AppBar, IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import logo from '../../assets/logo.png';
 
 
 const BoosterHeader = () => {
@@ -20,25 +21,27 @@ const BoosterHeader = () => {
     };
 
     return (
-        <header className={styles.header}>
-            <Link to="/">
-                <div className={""}>
-                    V-Boosting
+        <AppBar position='static' color="bgColor" enableColorOnDark>
+            <div className="flex flex-row items-center justify-between px-5 py-2">
+                <Link color='secondary' to="/">
+                    <div className={styles.logo}>
+                        <img className="w-19" src={logo} />
+                    </div>
+                </Link>
+                <div className="flex items-center justify-between">
+                    {navButton("/booster/dashboard", "Dashboard")}
+                    {navButton("/booster/orders", "My Orders")}
                 </div>
-            </Link>
-            <div className="flex items-center justify-between">
-                {navButton("/booster/dashboard", "Dashboard")}
-                {navButton("/booster/orders", "My Orders")}
+                <nav className="flex justify-between flex-row" >
+                    
+                    <div className="px-4">
+                        <IconButton > 
+                            <PersonIcon/>  
+                        </IconButton>
+                    </div>
+                </nav>
             </div>
-            <nav className="flex justify-between flex-row" >
-                
-                <div className="px-4">
-                    <IconButton > 
-                        <PersonIcon/>  
-                    </IconButton>
-                </div>
-            </nav>
-        </header>
+        </AppBar>
     );
 }
 

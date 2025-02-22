@@ -12,6 +12,9 @@ import Dashboard from './layouts/boosters/Dashboard.jsx';
 import Orders from './layouts/boosters/Orders.jsx';
 import OrderDetailPage from './pages/OrderDetailPage.jsx';
 import ProtectedRoute from './utils/routing/ProtectedRoute.jsx';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import React from 'react';
+import theme from './theme/theme.jsx'
 
 
 const root = document.getElementById('root');
@@ -23,49 +26,30 @@ export const App = () => {
                 <Route index path="/" element={<HomePage/>}> 
                     
                 </Route>
-                <Route element={<ProtectedRoute allowedRoles={CUSTOMER_ROLE}/>}>
+
+                <Route element={<ProtectedRoute isAuthCheck={true}/>}>
                     <Route exact path = "/profile" element={<ProfilePage/>}></Route>
                 </Route>
-                <Route exact path="booster" element={<BoosterMainPage/>}>
-                    <Route index path="dashboard" element={<Dashboard/>} />
-                    <Route exact path="orders" element={<Orders/>}></Route>
-                    <Route exact path="orderDetail/:uuid" element={<OrderDetailPage/>}></Route>
+                <Route element={<ProtectedRoute allowedRoles={BOOSTER_ROLE}/>}>
+                    <Route exact path="booster" element={<BoosterMainPage/>}>
+                        <Route index path="dashboard" element={<Dashboard/>} />
+                        <Route exact path="orders" element={<Orders/>}></Route>
+                        <Route exact path="orderDetail/:uuid" element={<OrderDetailPage/>}></Route>
+                    </Route>
                 </Route>
-                
             </Routes>
-
-            {/* <div className={isAuthenticated ? 'auth-container-active' : 'auth-container'}>
-                {isCustomer && <Navigation/>}
-            </div> */}
-
-
-
-            {/* <div className={isAdmin ? 'dashboard-active' : 'dashboard'}>
-                <div className={isAdmin ? 'main-container-active' : 'main-container'}>
-                    <Routes>
-                        <Route exact path="/" element={<HomePage/>}/>
-                        <Route exact path="admin" element={<ProtectedRoute allowedRoles={"ADMIN"}/>}>
-                            <Route exact path="games" element={<GameSection/>}/>
-                            <Route exact path="services" element={<ServiceSection/>}/>
-                        </Route>
-                        <Route element={<ProtectedRoute allowedRoles={"CUSTOMER"}/>}>
-                            <Route exact path = "/profile" element={<Profile/>}></Route>
-                            <Route exact path="/services" element={<ServicesPage/>}/>
-                        </Route>
-                        <Route exact path="/signInForm" element={<SignInForm/>}/>
-                        <Route exact path="/signUpForm" element={<SignUpForm/>}/>
-                    </Routes>
-                </div>
-            </div> */}
-
         </BrowserRouter>
     )
 };
 
 createRoot(root).render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <App/>
-        </PersistGate>
-    </Provider>
+    <React.StrictMode>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <ThemeProvider theme={theme}>
+                    <App/>
+                </ThemeProvider>
+            </PersistGate>
+        </Provider>
+    </React.StrictMode>
 );

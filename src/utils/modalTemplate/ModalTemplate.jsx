@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './ModalTemplate.module.css';
+import styles from '../../styles/ModalTemplate.module.css';
 import classNames from 'classnames';
 
 const ModalTemplate = ({
@@ -9,13 +9,14 @@ const ModalTemplate = ({
                            actions,
                            onClose,
                            modalClassName,
-                           modalContentClassName
+                           modalContentClassName,
+                           additionalStyles
                        }) => {
     if (!isOpen) return null;
 
     return (
         <div className={`${styles.overlay}`}>
-            <div className={classNames(styles.modal, modalClassName)}>
+            <div className={`${classNames(styles.modal, modalClassName)} ${additionalStyles}`}>
                 <div className={classNames(styles.modalContent, modalContentClassName)}>
                     <button className={styles.modalClose} onClick={onClose}>
                         &times;
