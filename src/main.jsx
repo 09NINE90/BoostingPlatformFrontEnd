@@ -14,7 +14,8 @@ import OrderDetailPage from './pages/OrderDetailPage.jsx';
 import ProtectedRoute from './utils/routing/ProtectedRoute.jsx';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import React from 'react';
-import theme from './theme/theme.jsx'
+import theme from './theme/theme.jsx';
+import HomeMain from './layouts/home/HomeMain.jsx';
 
 
 const root = document.getElementById('root');
@@ -23,8 +24,8 @@ export const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index path="/" element={<HomePage/>}> 
-                    
+                <Route path="/" element={<HomePage/>}> 
+                    <Route index element={<HomeMain/>}></Route>
                 </Route>
 
                 <Route element={<ProtectedRoute isAuthCheck={true}/>}>
@@ -47,6 +48,7 @@ createRoot(root).render(
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <ThemeProvider theme={theme}>
+                    <CssBaseline/>
                     <App/>
                 </ThemeProvider>
             </PersistGate>
