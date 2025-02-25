@@ -9,16 +9,40 @@ const darkPallete = {
         secondary: {
           main: '#D08D4E',
         },
-        bgColor: {
-          main: '#1B1A27'
-        },
         background: {
-          default: '#12121a',
-          paper: '#1B1A27',
+          default: '#1B1A27',
+          paper: '#272632',
         },
       },
 };
 
-const theme = createTheme(darkPallete);
+const testPallete = {
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#9C27B0', 
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#D08D4E',
+      contrastText: '#FFFFFF',
+    },
+    background: {
+      default: '#1B0F2B',
+      paper: '#2E1E4D', 
+    },
+    text: {
+      primary: '#E0E0E0',
+      secondary: '#BDBDBD',
+    },
+    divider: '#443D54',
+  },
+}
+
+
+const theme = createTheme({
+  ...testPallete,
+  spacing: 4,
+});
 export default theme;
 

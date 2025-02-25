@@ -16,6 +16,8 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import React from 'react';
 import theme from './theme/theme.jsx';
 import HomeMain from './layouts/home/HomeMain.jsx';
+import OfferPage from './pages/OfferPage.jsx';
+import { Navigate } from 'react-router-dom';
 
 
 const root = document.getElementById('root');
@@ -24,8 +26,11 @@ export const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<HomePage/>}> 
-                    <Route index element={<HomeMain/>}></Route>
+                <Route path="/" element={<Navigate to="/wow" replace/>} /> 
+                
+                <Route element={<HomePage/>}> 
+                        <Route path=":id" element={<HomeMain/>}></Route>
+                        <Route path="/offer/:offerId" element={<OfferPage/>}></Route>
                 </Route>
 
                 <Route element={<ProtectedRoute isAuthCheck={true}/>}>

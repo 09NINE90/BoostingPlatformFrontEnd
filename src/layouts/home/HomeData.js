@@ -16,7 +16,7 @@ export default promoList;
 
 const games = [
     {
-        id: "1",
+        id: "wow",
         name: "Wold Of Warcraft",
         categories: [
             {
@@ -30,7 +30,7 @@ const games = [
         ]
     },
     {
-        id: "2",
+        id: "destiny",
         name: "Destiny 2",
         categories: [
             {
@@ -44,7 +44,7 @@ const games = [
         ]
     },
     {
-        id: "3",
+        id: "cod",
         name: "Call Of Duty",
         categories: [
             {

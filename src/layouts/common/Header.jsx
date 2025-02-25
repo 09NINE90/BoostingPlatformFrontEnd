@@ -60,7 +60,7 @@ const Header = () => {
     );
 
     return (
-        <AppBar position='sticky' color="bgColor" enableColorOnDark>
+        <AppBar position='sticky' color="background.paper" enableColorOnDark>
             <div className="flex flex-row items-center justify-between px-5 py-2">
                 <Link color='secondary' to="/">
                     <div className={styles.logo}>

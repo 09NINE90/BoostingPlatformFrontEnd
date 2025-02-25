@@ -42,7 +42,7 @@ const OffersList = ({gameId}) => {
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 2, gridAutoRows: 'auto' }}>
             {offers.map((offer) => (
             <NavLink
-                to={`/api/offer/${offer.id}`}
+                to={`/offer/${offer.id}`}
             >
                 <Card key={offer.id} sx={{ 'maxWidth': '300px', display: 'flex', flexDirection: 'column', height: '100%' }}>
                     <CardMedia
