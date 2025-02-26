@@ -3,15 +3,16 @@ import Promo from "./Promo"
 import GameSideBar from './GameSideBar'
 import OffersList from "./OffersList"
 import { games } from './HomeData'
+import { useParams } from 'react-router'
 
 const HomeMain = () => {
-    const [currentGameId, setCurrentGameId] = useState(games[0].id);
+    const {id} = useParams();
     return (
-        <div className='flex flex-col bg-background'>
+        <div className='flex flex-col'>
             <Promo />
             <div className='flex flex-row gap-5'>
-                <GameSideBar gameList={games} currentGame={currentGameId} setCurrentGame={setCurrentGameId}/>
-                <OffersList gameId={currentGameId}/>
+                <GameSideBar gameList={games} currentGame={id}/>
+                <OffersList gameId={id}/>
             </div>
         </div>
     );

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Drawer, List, ListItem, ListItemText, Accordion, AccordionSummary, AccordionDetails, Typography, Divider } from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
+import { Drawer, List, ListItem, ListItemText, Divider } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import { useNavigate } from 'react-router';
 
-const GameSideBar = ({gameList, currentGame, setCurrentGame}) => {
+const GameSideBar = ({gameList, currentGame}) => {
+
+  const navigate = useNavigate();
 
   return (
     <div className="hidden md:flex p-4">
@@ -13,7 +15,7 @@ const GameSideBar = ({gameList, currentGame, setCurrentGame}) => {
           <div key={game.id}>
             <ListItem
               button
-              onClick={() => setCurrentGame(game.id)}
+              onClick={() =>navigate(`/${game.id}`)}
               sx={{
                 display: "flex",
                 justifyContent: 'space-between',
