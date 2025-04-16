@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormControl, InputLabel, MenuItem, Select, Checkbox, FormControlLabel, Slider, Divider, Box, Button } from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import {getOptions} from "src/services/option.jsx";
 
 const OfferPayment = ({optionsBlocks} ) => {
     const [basePrice, setBasePrice] = useState(200);
@@ -9,9 +10,10 @@ const OfferPayment = ({optionsBlocks} ) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalTime, setTotalTime] = useState(0);
 
+
   useEffect(() => {
     calculateTotals();
-    
+
   }, [selectedOptions]);
 
   const handleChange = (blockId, value) => {
@@ -24,19 +26,19 @@ const OfferPayment = ({optionsBlocks} ) => {
   const calculateTotals = () => {
     let price = basePrice;
     let time = baseTime;
-  
-    let totalPercentChange = 0; 
-  
-  
+
+    let totalPercentChange = 0;
+
+
     const processOptions = (blocks) => {
       blocks.forEach((block) => {
         if (block.items) {
           block.items.forEach((item) => {
             const isSelected =
-              block.type === "checkbox"
+              block.type === "CHECKBOX"
                 ? selectedOptions[block.id]?.includes(item.value) // для checkbox
                 : selectedOptions[block.id] === item.value; // для select сюда еще надо будет бахнуть выбор ранга
-  
+
             if (isSelected) {
               price += item.priceChange || 0;
               time += item.timeChange || 0;
@@ -44,128 +46,134 @@ const OfferPayment = ({optionsBlocks} ) => {
               if (item.percentChange) {
                 totalPercentChange += item.percentChange;
               }
-  
+
               if (item.subOptions) {
                 processOptions(item.subOptions);
               }
             }
           });
         }
-  
-        if (block.type === "slider" && selectedOptions[block.id]) {
-          price += (selectedOptions[block.id] - block.min) * block.priceChange;
+
+        if (block.type === "SLIDER" && selectedOptions[block.id]) {
+          price += (selectedOptions[block.id] - block.min) * block.sliderPriceChange;
         }
       });
     };
     processOptions(optionsBlocks);
-  
+
     if (totalPercentChange !== 0) {
       price += (price * totalPercentChange) / 100;
     }
-  
+
     setTotalPrice(price);
     setTotalTime(time);
   };
 
-  const renderOption = (option) => (
-    <div key={option.id} className="mb-5">
-      <h3 className="mb-2 font-semibold">{option.title}</h3>
+  const renderOption = (option) => {
+      return (
+          <div key={option.id} className="mb-5">
+              <h3 className="mb-2 font-semibold">{option.title}</h3>
 
-      {option.type === "select" && (
-        <FormControl fullWidth>
-          <InputLabel color="secondary">{option.title}</InputLabel>
-          <Select
-            value={selectedOptions[option.id] || ""}
-            onChange={(e) => handleChange(option.id, e.target.value)}
-            color="secondary"
-          >
-            {option.items.map((item) => (
-              <MenuItem key={item.value} value={item.value}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      )}
+              {option.type === "SELECT" && (
+                  <FormControl fullWidth>
+                      <InputLabel color="secondary">{option.title}</InputLabel>
+                      <Select
+                          value={selectedOptions[option.id] || ""}
+                          onChange={(e) => handleChange(option.id, e.target.value)}
+                          color="secondary"
+                      >
+                          {option.items.map((item) => (
+                              <MenuItem key={item.value} value={item.value}>
+                                  {item.label}
+                              </MenuItem>
+                          ))}
+                      </Select>
+                  </FormControl>
+              )}
 
-      {option.type === "checkbox" && (
-        <div>
-          {option.items.map((item) => (
-            <FormControlLabel
-              key={item.value}
-              control={
-                <Checkbox
-                  checked={selectedOptions[option.id]?.includes(item.value) || false}
-                  color="secondary"
-                  onChange={(e) => {
-                    const currentValues = selectedOptions[option.id] || [];
-                    const newValues = e.target.checked
-                      ? [...currentValues, item.value]
-                      : currentValues.filter((v) => v !== item.value);
-                    handleChange(option.id, newValues);
-                  }}
-                />
-              }
-              label={item.label}
-            />
-          ))}
-        </div>
-      )}
+              {option.type === "CHECKBOX" && (
+                  <div>
+                      {option.items.map((item) => (
+                          <FormControlLabel
+                              key={item.value}
+                              control={
+                                  <Checkbox
+                                      checked={selectedOptions[option.id]?.includes(item.value) || false}
+                                      color="secondary"
+                                      onChange={(e) => {
+                                          const currentValues = selectedOptions[option.id] || [];
+                                          const newValues = e.target.checked
+                                              ? [...currentValues, item.value]
+                                              : currentValues.filter((v) => v !== item.value);
+                                          handleChange(option.id, newValues);
+                                      }}
+                                  />
+                              }
+                              label={item.label}
+                          />
+                      ))}
+                  </div>
+              )}
 
-      {option.type === "buttons" && (
-        <Box>
-          {option.items.map((item) => (
-            <Button sx={{m: 1}} key={item.value} value={item.value} 
-              variant={selectedOptions[option.id]?.includes(item.value)? "contained": "outlined"}
-              onClick={() => handleChange(option.id, item.value)}
-            >
-                {item.label}
-            </Button>
-          ))}
-        </Box>
-      )}
+              {option.type === "BUTTONS" && (
+                  <Box>
+                      {option.items.map((item) => (
+                          <Button sx={{m: 1}} key={item.value} value={item.value}
+                                  variant={selectedOptions[option.id]?.includes(item.value)? "contained": "outlined"}
+                                  onClick={() => handleChange(option.id, item.value)}
+                          >
+                              {item.label}
+                          </Button>
+                      ))}
+                  </Box>
+              )}
 
-      {option.type === "slider" && (
-        <Slider
-            marks
-            valueLabelDisplay="auto"
-            value={selectedOptions[option.id] || option.min}
-            min={option.min}
-            max={option.max}
-            getAriaValueText={(value) => value}
-            step={option.step}
-            onChange={(_, value) => handleChange(option.id, value)}
-            aria-labelledby="slider"
-            color="secondary"
-        />
-      )}
-    </div>
-  );
+              {option.type === "SLIDER" && (
+                  <Slider
+                      marks
+                      valueLabelDisplay="auto"
+                      value={selectedOptions[option.id] || option.min}
+                      min={option.min}
+                      max={option.max}
+                      getAriaValueText={(value) => value}
+                      step={option.step}
+                      onChange={(_, value) => handleChange(option.id, value)}
+                      aria-labelledby="slider"
+                      color="secondary"
+                  />
+              )}
+          </div>
+      );
+  }
+
 
 
   const renderOptions = (optionsBlocks) => {
-    const run = (acc, remainingBlocks) => {
-        if (remainingBlocks.length === 0) {
-            return acc; 
+      console.log(optionsBlocks);
+
+    const run = (acc, aa) => {
+        if (aa.length === 0) {
+            return acc;
         }
 
-        const block = remainingBlocks[0]; 
-        acc.push(renderOption(block)); 
+        const block = aa[0];
+        console.log(block);
+        acc.push(renderOption(block));
 
-        
+
         if (block.items) {
             block.items.forEach((item) => {
-                const isSelected = block.type === "checkbox"
+                const isSelected = block.type === "CHECKBOX"
                     ? selectedOptions[block.id]?.includes(item.value)
                     : selectedOptions[block.id] === item.value;
                 if (item.subOptions && item.subOptions.length !== 0 && isSelected) {
-                    run(acc, item.subOptions); 
+                    run(acc, item.subOptions);
                 }
             });
         }
 
-        
-        return run(acc, remainingBlocks.slice(1));
+
+        return run(acc, aa.slice(1));
     };
 
     return run([], optionsBlocks);
@@ -196,7 +204,7 @@ const OfferPayment = ({optionsBlocks} ) => {
           </Button>
         </div>
       </div>
-      
+
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import {baseUrl} from "../constants/constants.jsx";
+import {baseUrl} from "../utils/constants/constants.jsx";
 import axios from "axios";
 
 export const getAllServicesApi = async (requestData) => {
