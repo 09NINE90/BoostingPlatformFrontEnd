@@ -11,7 +11,7 @@ const OfferInfo = ( {offerData} ) => {
 
   const renderBlock = (blockInfo) => (
     <Box>
-      { blockInfo.type === "block" && 
+      { blockInfo.type === "BLOCK" &&
         <Box>
           <Typography variant="h4" className="text-white font-bold !mb-4">
             {blockInfo.title}
@@ -37,7 +37,7 @@ const OfferInfo = ( {offerData} ) => {
         </Box>
       }
       
-      { blockInfo.type === "relatedOffers" && 
+      { blockInfo.type === "RELATED_OFFERS" &&
           <InfoBlockRelatedOffers />
       }
     </Box>
