@@ -151,12 +151,12 @@ const OfferPayment = ({optionsBlocks} ) => {
   const renderOptions = (optionsBlocks) => {
       console.log(optionsBlocks);
 
-    const run = (acc, aa) => {
-        if (aa.length === 0) {
+    const run = (acc, remainingBlocks) => {
+        if (remainingBlocks.length === 0) {
             return acc;
         }
 
-        const block = aa[0];
+        const block = remainingBlocks[0];
         console.log(block);
         acc.push(renderOption(block));
 
@@ -173,7 +173,7 @@ const OfferPayment = ({optionsBlocks} ) => {
         }
 
 
-        return run(acc, aa.slice(1));
+        return run(acc, remainingBlocks.slice(1));
     };
 
     return run([], optionsBlocks);

@@ -23,15 +23,15 @@ const OfferInfo = ( {offerData} ) => {
         </Box>
       }
 
-      { blockInfo.type === "list" && 
+      { blockInfo.type === "LIST" &&
         <InfoBlockList data={blockInfo}/>
       }
 
-      { blockInfo.type === "accordion-list" && 
+      { blockInfo.type === "ACCORDION-LIST" &&
         <InfoBlockAccordionList data={blockInfo}/>
       }
 
-      { blockInfo.type === "accordion" && 
+      { blockInfo.type === "ACCORDION" &&
         <Box> 
           <InfoBlockAccordion data={blockInfo}/>
         </Box>
