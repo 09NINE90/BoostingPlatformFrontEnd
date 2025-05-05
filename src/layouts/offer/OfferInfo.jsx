@@ -27,7 +27,7 @@ const OfferInfo = ( {offerData} ) => {
         <InfoBlockList data={blockInfo}/>
       }
 
-      { blockInfo.type === "ACCORDION-LIST" &&
+      { blockInfo.type === "ACCORDION_LIST" &&
         <InfoBlockAccordionList data={blockInfo}/>
       }
 
