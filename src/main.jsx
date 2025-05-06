@@ -26,7 +26,7 @@ export const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Navigate to="/wow" replace/>} /> 
+                <Route path="/" element={<Navigate to="/LoE" replace/>} />
                 
                 <Route element={<HomePage/>}> 
                         <Route path=":id" element={<HomeMain/>}></Route>

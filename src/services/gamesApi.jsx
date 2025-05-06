@@ -2,12 +2,12 @@ import {baseUrl} from "../utils/constants/constants.jsx";
 import axios from "axios";
 
 export const getAllGamesApi = async () => {
-    const response = await axios.get(`${baseUrl}/games/getAllGames`, {withCredentials: true});
+    const response = await axios.get(`${baseUrl}/api/games/getAllGames`, {withCredentials: true});
     return response.data;
 }
 
 export const getGameByIdApi = async (gameId) => {
-    const response = await axios.get(`${baseUrl}/games/${gameId}`, {withCredentials: true});
+    const response = await axios.get(`${baseUrl}/api/games/getBySecondId/${gameId}`, {withCredentials: true});
     return response.data;
 }
 

@@ -7,11 +7,11 @@ import { getOfferData, getOptions } from "src/services/option.jsx";
 
 const OfferPage = () => {
     const { offerId } = useParams();
-    const [options, setOptions] = useState([]); // Начальное значение - пустой массив
-    const [offerData, setOfferData] = useState(null); // Начальное значение - null
+    const [options, setOptions] = useState([]);
+    const [offerData, setOfferData] = useState(null);
 
     useEffect(() => {
-        if (!offerId) return; // Если offerId нет, не делаем запрос
+        if (!offerId) return;
 
         const fetchData = async () => {
             try {
@@ -27,10 +27,10 @@ const OfferPage = () => {
         };
 
         fetchData();
-    }, [offerId]);// Зависимость от offerId, чтобы перезагружать данные при изменении
+    }, [offerId]);
 
-    if (!offerData || !options.length) {
-        return <div>Загрузка...</div>; // Лоадер, пока данные не загружены
+    if (!offerData) {
+        return <div>Загрузка...</div>;
     }
 
     return (
