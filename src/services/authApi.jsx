@@ -1,7 +1,8 @@
+import {baseUrl} from "../utils/constants/constants.jsx";
 import axios from "axios";
 
 export const getAuthenticated = async () => {
-    const authenticatedResponse = await axios.get(`/api/auth/me`);
+    const authenticatedResponse = await axios.get(`${baseUrl}/api/auth/me`);
     if (authenticatedResponse.data) {
         const {roles, token} = authenticatedResponse.data;
         console.log('token', token, 'roles', roles[0]);
@@ -16,13 +17,21 @@ export const getAuthenticated = async () => {
 };
 
 export const postAuthenticated = async (credentials) => {
-    const authenticatedResponse = await axios.post(`/api/auth/signIn`, credentials, {withCredentials: true});
-    const {roles, token} = authenticatedResponse.data;
+    const authenticatedResponse = await axios.post(`${baseUrl}/api/auth/signIn`, credentials, {withCredentials: true});
+    if (!authenticatedResponse.data) {
+        throw new Error('Сервер не вернул данные');
+    }
 
-    return ({
-        roles: roles[0],
-        token,
-    });
+    const { roles, token } = authenticatedResponse.data;
+
+    if (!token) {
+        throw new Error('Токен не найден в ответе сервера');
+    }
+
+    return {
+        roles: Array.isArray(roles) ? roles[0] : roles,
+        token: token
+    };
 
 }
 

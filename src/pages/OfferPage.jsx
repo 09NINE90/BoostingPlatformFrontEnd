@@ -39,7 +39,7 @@ const OfferPage = () => {
                 <OfferInfo offerData={offerData} />
             </Box>
             <Box className="pl-20">
-                <OfferPayment optionsBlocks={options} />
+                <OfferPayment offerData={offerData} optionsBlocks={options} />
             </Box>
         </Box>
     );
